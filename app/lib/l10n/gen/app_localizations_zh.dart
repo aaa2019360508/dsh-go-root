@@ -18509,6 +18509,129 @@ class L10nZh extends L10n {
   String get askAiQuestionRemote => '怎么连接自己的电脑或服务器？和用本机有什么不同？';
 
   @override
+  String get rootModeTitle => 'Root 模式';
+
+  @override
+  String get rootModeSubtitle => '让引擎用手机的真实 root 访问整个系统';
+
+  @override
+  String get searchKwRootMode => 'root,su,sudo,超级权限,最高权限,KernelSU,Magisk,APatch,data,/data,系统目录';
+
+  @override
+  String get rootModeStatus => '状态';
+
+  @override
+  String get rootModeSwitch => '开启 Root 模式';
+
+  @override
+  String get rootModeSwitchOn => '已开启：引擎里的 sudo / su 会以 root 执行';
+
+  @override
+  String get rootModeSwitchOff => '未开启';
+
+  @override
+  String get rootModeRefresh => '检测 root';
+
+  @override
+  String get rootModeManager => '管理器';
+
+  @override
+  String get rootModeVersion => '版本';
+
+  @override
+  String get rootModeSuPath => 'su 路径';
+
+  @override
+  String get rootModeBridge => '访客通道';
+
+  @override
+  String get rootModeBridgeOn => '已监听';
+
+  @override
+  String get rootModeBridgeOff => '未监听';
+
+  @override
+  String get rootModeRequests => '本次已执行';
+
+  @override
+  String get rootModeGranted => '已获得 root 权限';
+
+  @override
+  String get rootModeMissing => '没有找到 su：请先安装 KernelSU、Magisk 或 APatch，并在管理器里给 DSH Go 授权。';
+
+  @override
+  String get rootModeNotGranted => '管理器没有授权：点「检测 root」重新申请。';
+
+  @override
+  String get rootModeTimeout => '管理器没有回应：请在管理器里确认授权弹窗。';
+
+  @override
+  String get rootModeUnknown => '尚未检测';
+
+  @override
+  String get rootModePolicy => '授权范围';
+
+  @override
+  String get rootModeScope => '访问范围';
+
+  @override
+  String get rootModeScopeWrite => '读写';
+
+  @override
+  String get rootModeScopeRead => '只读';
+
+  @override
+  String get rootModeScopeHint => '只读模式下，写文件、改权限、装应用这类命令会被直接拒绝。';
+
+  @override
+  String get rootModeApproval => '确认方式';
+
+  @override
+  String get rootModeApprovalOff => '不确认';
+
+  @override
+  String get rootModeApprovalDanger => '危险操作确认';
+
+  @override
+  String get rootModeApprovalAlways => '每次确认';
+
+  @override
+  String get rootModeTest => '试跑一条命令';
+
+  @override
+  String get rootModeTestHint => '例如 ls /data/data';
+
+  @override
+  String get rootModeRun => '运行';
+
+  @override
+  String get rootModeOutputTruncated => '输出被截断';
+
+  @override
+  String get rootModeLog => '最近命令';
+
+  @override
+  String get rootModeLogEmpty => '还没有命令';
+
+  @override
+  String get rootModeClear => '清空记录';
+
+  @override
+  String get rootModeConfirmTitle => '允许这条 root 命令？';
+
+  @override
+  String get rootModeConfirmAllow => '允许';
+
+  @override
+  String get rootModeConfirmDeny => '拒绝';
+
+  @override
+  String get rootModeWarning => '开启后，模型可以读写 /data、/system 和其他应用的数据，也能安装模块、改系统设置。做错可能丢数据、泄露隐私或让手机无法开机。请先备份，只在你自己的设备上使用。';
+
+  @override
+  String get rootModeWarningAccept => '我知道了';
+
+  @override
   String get phoneRuntimeUpgradeBase => '新引擎与现有 Linux 环境不能确认兼容，更新已停止。原环境和已装工具没有删除。请先完整备份，再联系维护者迁移；不要直接重置或卸载 App。';
 
   @override

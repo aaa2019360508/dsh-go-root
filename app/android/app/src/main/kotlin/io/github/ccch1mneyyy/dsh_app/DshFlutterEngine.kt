@@ -24,6 +24,7 @@ object DshFlutterEngine {
         cache.get(ENGINE_ID)?.let { return it }
         return FlutterEngine(context.applicationContext).also { engine ->
             engine.plugins.add(RuntimePlugin())
+            engine.plugins.add(io.github.ccch1mneyyy.dsh_app.root.RootPlugin())
             engine.plugins.add(PhonePlugin())
             engine.plugins.add(NotifyPlugin())
             engine.plugins.add(FilesPlugin())

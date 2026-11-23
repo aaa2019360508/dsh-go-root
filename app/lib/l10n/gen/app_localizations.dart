@@ -34020,6 +34020,252 @@ abstract class L10n {
   /// **'怎么连接自己的电脑或服务器？和用本机有什么不同？'**
   String get askAiQuestionRemote;
 
+  /// No description provided for @rootModeTitle.
+  ///
+  /// In zh, this message translates to:
+  /// **'Root 模式'**
+  String get rootModeTitle;
+
+  /// No description provided for @rootModeSubtitle.
+  ///
+  /// In zh, this message translates to:
+  /// **'让引擎用手机的真实 root 访问整个系统'**
+  String get rootModeSubtitle;
+
+  /// No description provided for @searchKwRootMode.
+  ///
+  /// In zh, this message translates to:
+  /// **'root,su,sudo,超级权限,最高权限,KernelSU,Magisk,APatch,data,/data,系统目录'**
+  String get searchKwRootMode;
+
+  /// No description provided for @rootModeStatus.
+  ///
+  /// In zh, this message translates to:
+  /// **'状态'**
+  String get rootModeStatus;
+
+  /// No description provided for @rootModeSwitch.
+  ///
+  /// In zh, this message translates to:
+  /// **'开启 Root 模式'**
+  String get rootModeSwitch;
+
+  /// No description provided for @rootModeSwitchOn.
+  ///
+  /// In zh, this message translates to:
+  /// **'已开启：引擎里的 sudo / su 会以 root 执行'**
+  String get rootModeSwitchOn;
+
+  /// No description provided for @rootModeSwitchOff.
+  ///
+  /// In zh, this message translates to:
+  /// **'未开启'**
+  String get rootModeSwitchOff;
+
+  /// No description provided for @rootModeRefresh.
+  ///
+  /// In zh, this message translates to:
+  /// **'检测 root'**
+  String get rootModeRefresh;
+
+  /// No description provided for @rootModeManager.
+  ///
+  /// In zh, this message translates to:
+  /// **'管理器'**
+  String get rootModeManager;
+
+  /// No description provided for @rootModeVersion.
+  ///
+  /// In zh, this message translates to:
+  /// **'版本'**
+  String get rootModeVersion;
+
+  /// No description provided for @rootModeSuPath.
+  ///
+  /// In zh, this message translates to:
+  /// **'su 路径'**
+  String get rootModeSuPath;
+
+  /// No description provided for @rootModeBridge.
+  ///
+  /// In zh, this message translates to:
+  /// **'访客通道'**
+  String get rootModeBridge;
+
+  /// No description provided for @rootModeBridgeOn.
+  ///
+  /// In zh, this message translates to:
+  /// **'已监听'**
+  String get rootModeBridgeOn;
+
+  /// No description provided for @rootModeBridgeOff.
+  ///
+  /// In zh, this message translates to:
+  /// **'未监听'**
+  String get rootModeBridgeOff;
+
+  /// No description provided for @rootModeRequests.
+  ///
+  /// In zh, this message translates to:
+  /// **'本次已执行'**
+  String get rootModeRequests;
+
+  /// No description provided for @rootModeGranted.
+  ///
+  /// In zh, this message translates to:
+  /// **'已获得 root 权限'**
+  String get rootModeGranted;
+
+  /// No description provided for @rootModeMissing.
+  ///
+  /// In zh, this message translates to:
+  /// **'没有找到 su：请先安装 KernelSU、Magisk 或 APatch，并在管理器里给 DSH Go 授权。'**
+  String get rootModeMissing;
+
+  /// No description provided for @rootModeNotGranted.
+  ///
+  /// In zh, this message translates to:
+  /// **'管理器没有授权：点「检测 root」重新申请。'**
+  String get rootModeNotGranted;
+
+  /// No description provided for @rootModeTimeout.
+  ///
+  /// In zh, this message translates to:
+  /// **'管理器没有回应：请在管理器里确认授权弹窗。'**
+  String get rootModeTimeout;
+
+  /// No description provided for @rootModeUnknown.
+  ///
+  /// In zh, this message translates to:
+  /// **'尚未检测'**
+  String get rootModeUnknown;
+
+  /// No description provided for @rootModePolicy.
+  ///
+  /// In zh, this message translates to:
+  /// **'授权范围'**
+  String get rootModePolicy;
+
+  /// No description provided for @rootModeScope.
+  ///
+  /// In zh, this message translates to:
+  /// **'访问范围'**
+  String get rootModeScope;
+
+  /// No description provided for @rootModeScopeWrite.
+  ///
+  /// In zh, this message translates to:
+  /// **'读写'**
+  String get rootModeScopeWrite;
+
+  /// No description provided for @rootModeScopeRead.
+  ///
+  /// In zh, this message translates to:
+  /// **'只读'**
+  String get rootModeScopeRead;
+
+  /// No description provided for @rootModeScopeHint.
+  ///
+  /// In zh, this message translates to:
+  /// **'只读模式下，写文件、改权限、装应用这类命令会被直接拒绝。'**
+  String get rootModeScopeHint;
+
+  /// No description provided for @rootModeApproval.
+  ///
+  /// In zh, this message translates to:
+  /// **'确认方式'**
+  String get rootModeApproval;
+
+  /// No description provided for @rootModeApprovalOff.
+  ///
+  /// In zh, this message translates to:
+  /// **'不确认'**
+  String get rootModeApprovalOff;
+
+  /// No description provided for @rootModeApprovalDanger.
+  ///
+  /// In zh, this message translates to:
+  /// **'危险操作确认'**
+  String get rootModeApprovalDanger;
+
+  /// No description provided for @rootModeApprovalAlways.
+  ///
+  /// In zh, this message translates to:
+  /// **'每次确认'**
+  String get rootModeApprovalAlways;
+
+  /// No description provided for @rootModeTest.
+  ///
+  /// In zh, this message translates to:
+  /// **'试跑一条命令'**
+  String get rootModeTest;
+
+  /// No description provided for @rootModeTestHint.
+  ///
+  /// In zh, this message translates to:
+  /// **'例如 ls /data/data'**
+  String get rootModeTestHint;
+
+  /// No description provided for @rootModeRun.
+  ///
+  /// In zh, this message translates to:
+  /// **'运行'**
+  String get rootModeRun;
+
+  /// No description provided for @rootModeOutputTruncated.
+  ///
+  /// In zh, this message translates to:
+  /// **'输出被截断'**
+  String get rootModeOutputTruncated;
+
+  /// No description provided for @rootModeLog.
+  ///
+  /// In zh, this message translates to:
+  /// **'最近命令'**
+  String get rootModeLog;
+
+  /// No description provided for @rootModeLogEmpty.
+  ///
+  /// In zh, this message translates to:
+  /// **'还没有命令'**
+  String get rootModeLogEmpty;
+
+  /// No description provided for @rootModeClear.
+  ///
+  /// In zh, this message translates to:
+  /// **'清空记录'**
+  String get rootModeClear;
+
+  /// No description provided for @rootModeConfirmTitle.
+  ///
+  /// In zh, this message translates to:
+  /// **'允许这条 root 命令？'**
+  String get rootModeConfirmTitle;
+
+  /// No description provided for @rootModeConfirmAllow.
+  ///
+  /// In zh, this message translates to:
+  /// **'允许'**
+  String get rootModeConfirmAllow;
+
+  /// No description provided for @rootModeConfirmDeny.
+  ///
+  /// In zh, this message translates to:
+  /// **'拒绝'**
+  String get rootModeConfirmDeny;
+
+  /// No description provided for @rootModeWarning.
+  ///
+  /// In zh, this message translates to:
+  /// **'开启后，模型可以读写 /data、/system 和其他应用的数据，也能安装模块、改系统设置。做错可能丢数据、泄露隐私或让手机无法开机。请先备份，只在你自己的设备上使用。'**
+  String get rootModeWarning;
+
+  /// No description provided for @rootModeWarningAccept.
+  ///
+  /// In zh, this message translates to:
+  /// **'我知道了'**
+  String get rootModeWarningAccept;
+
   /// No description provided for @phoneRuntimeUpgradeBase.
   ///
   /// In zh, this message translates to:
