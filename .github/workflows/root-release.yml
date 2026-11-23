@@ -15,7 +15,10 @@ on:
   push:
     branches: [main]
     paths:
-      - 'app/**'
+      - 'app/lib/**'
+      - 'app/android/**'
+      - 'app/assets/**'
+      - 'app/pubspec.yaml'
       - 'runtime/**'
       - 'tooling/**'
       - '.github/workflows/root-release.yml'
