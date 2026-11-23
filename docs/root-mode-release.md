@@ -15,10 +15,14 @@
 
 不把整个引擎跑在 root 下，只提权单条命令：引擎仍是 App uid，`sudo` 走抽象 unix socket 到 App，App 用 `su -c` 执行（Magisk / KernelSU / APatch 同一种写法），超时就杀进程。每次启动随机生成 socket 名与 token，写在 `/var/lib/dsh-app/root/bridge.json`（0600）；引擎停止即关闭通道；安全模式不写 shim、不开通道。
 
+### 源码
+
+补丁在 `root-mode.patch`，说明在 `ROOT-MODE.md`，指南在 `root-mode-guide-zh.md` / `root-mode-guide-en.md`。
+
 ### 安装
 
 1. 手机已 root，并在管理器里给 DSH Go 授权。
-2. 下载本页 `dsh-go-*-arm64.apk`（Android 8+，arm64）。
+2. 下载本页 `dsh-go-root-*-arm64.apk`（Android 8+，arm64）。本包用 debug 签名：装过官方版的手机要先卸载官方版，数据不会自动迁移。
 3. 首次启动按原版流程装好本机运行环境（约 1 GB）。
 4. 设置 → 能力 → Root 模式 → 读提示 → 开启 → 「检测 root」→ 管理器弹窗选「允许（永久）」。
 5. 在 App 终端里 `sudo id`，看到 `uid=0(root)` 即成功。
@@ -29,4 +33,4 @@
 
 ### 与上游
 
-基于 [ccch1mneyyy/dsh-Go](https://github.com/ccch1mneyyy/dsh-Go) v1.3.0 的社区补丁，代码 AGPL-3.0；`sdk/`、`examples/` 为 MIT。名称、标识与 Deepy / 鲸娘形象不在开源授权范围内。本项目不是官方版本，也不代表 DeepSeek。
+本仓库：[aaa2019360508/dsh-go-root](https://github.com/aaa2019360508/dsh-go-root)，基于 [ccch1mneyyy/dsh-Go](https://github.com/ccch1mneyyy/dsh-Go) v1.3.0 的社区补丁（已合入上游 2026-11-23 的 `5a3e95d`），代码 AGPL-3.0；`sdk/`、`examples/` 为 MIT。名称、标识与 Deepy / 鲸娘形象不在开源授权范围内。本项目不是官方版本，也不代表 DeepSeek。
