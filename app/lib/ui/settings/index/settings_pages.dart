@@ -39,6 +39,7 @@ import '../personalization_page.dart';
 import '../privacy_page.dart';
 import '../linux_environment_page.dart';
 import '../reply_prefs_page.dart';
+import '../root_mode_page.dart';
 import '../settings_screen.dart';
 import '../system_access_page.dart';
 import '../../companion/companion_voice_page.dart';
@@ -61,6 +62,7 @@ Widget settingsPage(SettingsPageId id, {String? sessionId}) => switch (id) {
   SettingsPageId.replyPrefs => const ReplyPrefsPage(),
   SettingsPageId.sharedLinks => const HostedLinksPage(),
   SettingsPageId.phone => const PhoneControlScreen(),
+  SettingsPageId.rootMode => const RootModePage(),
   SettingsPageId.phoneAppRules => const PhoneAppRulesPage(),
   SettingsPageId.phoneAlwaysAllow => const PhoneAlwaysAllowPage(),
   SettingsPageId.phoneAndroidShell => const AndroidShellPage(),

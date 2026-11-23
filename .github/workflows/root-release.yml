@@ -1,0 +1,108 @@
+name: root-apk
+
+# Builds the arm64 APK with root mode and publishes it as a release.
+#
+# The runtime (Ubuntu + Node + patched DSH) is built from source here rather than committed:
+# runtime/out is ~240 MB and the app's own CI does the same thing. A cold run takes 40–60 min;
+# the Gradle and runtime caches below make later runs much shorter.
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'docs/**'
+      - '**/*.md'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: root-apk-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  apk:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Reclaim disk
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android/sdk/ndk /opt/ghc /opt/hostedtoolcache/CodeQL || true
+          df -h /
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Toolchain (Flutter, Android SDK/NDK)
+        run: |
+          bash tooling/setup-toolchain.sh
+          source tooling/env.sh
+          flutter --version
+          java -version
+
+      - name: Cache runtime downloads
+        uses: actions/cache@v4
+        with:
+          path: runtime/.cache
+          key: runtime-cache-${{ hashFiles('runtime/build-runtime.sh', 'runtime/locks/**') }}
+          restore-keys: runtime-cache-
+
+      - name: Build runtime (Ubuntu + Node + patched DSH)
+        run: |
+          source tooling/env.sh
+          bash runtime/build-runtime.sh arm64-v8a
+
+      - name: Cache Gradle
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: gradle-${{ hashFiles('app/android/**/*.gradle.kts', 'app/pubspec.yaml') }}
+          restore-keys: gradle-
+
+      - name: Build APK
+        id: apk
+        run: |
+          source tooling/env.sh
+          version=$(sed -n 's/^version:[[:space:]]*\([^+[:space:]]*\).*/\1/p' app/pubspec.yaml)
+          name="${version}-root.${GITHUB_RUN_NUMBER}"
+          echo "name=$name" >> "$GITHUB_OUTPUT"
+          DSH_BETA_TOKEN_FILE= bash tooling/build-apk.sh -f arm64 --no-companion --no-star --build-name "$name"
+          ls -la app/build/app/outputs/flutter-apk/
+
+      - name: Sign checksums
+        run: |
+          cd app/build/app/outputs/flutter-apk
+          sha256sum app-arm64-release.apk > SHA256SUMS
+          cat SHA256SUMS
+
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          tag="root-v${{ steps.apk.outputs.name }}"
+          apk=app/build/app/outputs/flutter-apk/app-arm64-release.apk
+          sums=app/build/app/outputs/flutter-apk/SHA256SUMS
+          cp "$apk" "app/build/app/outputs/flutter-apk/dsh-go-${{ steps.apk.outputs.name }}-arm64.apk"
+          asset="app/build/app/outputs/flutter-apk/dsh-go-${{ steps.apk.outputs.name }}-arm64.apk"
+          gh release create "$tag" "$asset" "$sums" \
+            --repo "$GITHUB_REPOSITORY" \
+            --title "DSH Go ${{ steps.apk.outputs.name }} · Root 模式" \
+            --notes-file docs/root-mode-release.md
+
+      - name: Keep the APK even when the release step fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dsh-go-root-apk
+          path: |
+            app/build/app/outputs/flutter-apk/app-arm64-release.apk
+            app/build/app/outputs/flutter-apk/SHA256SUMS
+          if-no-files-found: warn

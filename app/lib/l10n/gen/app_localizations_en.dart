@@ -19943,6 +19943,133 @@ class L10nEn extends L10n {
       'How do I connect my own computer or server, and how is that different from this phone?';
 
   @override
+  String get rootModeTitle => 'Root mode';
+
+  @override
+  String get rootModeSubtitle => 'Let the engine reach the whole system through the phone\'s own root';
+
+  @override
+  String get searchKwRootMode =>
+      'root,su,sudo,superuser,privilege,KernelSU,Magisk,APatch,data,/data,system directories';
+
+  @override
+  String get rootModeStatus => 'Status';
+
+  @override
+  String get rootModeSwitch => 'Turn on root mode';
+
+  @override
+  String get rootModeSwitchOn => 'On: sudo / su inside the engine run as root';
+
+  @override
+  String get rootModeSwitchOff => 'Off';
+
+  @override
+  String get rootModeRefresh => 'Check root';
+
+  @override
+  String get rootModeManager => 'Manager';
+
+  @override
+  String get rootModeVersion => 'Version';
+
+  @override
+  String get rootModeSuPath => 'su path';
+
+  @override
+  String get rootModeBridge => 'Guest channel';
+
+  @override
+  String get rootModeBridgeOn => 'Listening';
+
+  @override
+  String get rootModeBridgeOff => 'Not listening';
+
+  @override
+  String get rootModeRequests => 'Run this session';
+
+  @override
+  String get rootModeGranted => 'Root granted';
+
+  @override
+  String get rootModeMissing =>
+      'No su found: install KernelSU, Magisk or APatch first, then grant DSH Go in the manager.';
+
+  @override
+  String get rootModeNotGranted => 'Not granted yet: tap “Check root” to ask again.';
+
+  @override
+  String get rootModeTimeout => 'The manager did not answer: confirm its prompt.';
+
+  @override
+  String get rootModeUnknown => 'Not checked yet';
+
+  @override
+  String get rootModePolicy => 'What root may do';
+
+  @override
+  String get rootModeScope => 'Scope';
+
+  @override
+  String get rootModeScopeWrite => 'Read-write';
+
+  @override
+  String get rootModeScopeRead => 'Read-only';
+
+  @override
+  String get rootModeScopeHint =>
+      'In read-only scope, commands that write files, change permissions or install packages are refused.';
+
+  @override
+  String get rootModeApproval => 'Confirmation';
+
+  @override
+  String get rootModeApprovalOff => 'Never ask';
+
+  @override
+  String get rootModeApprovalDanger => 'Ask for destructive';
+
+  @override
+  String get rootModeApprovalAlways => 'Ask every time';
+
+  @override
+  String get rootModeTest => 'Run a command';
+
+  @override
+  String get rootModeTestHint => 'e.g. ls /data/data';
+
+  @override
+  String get rootModeRun => 'Run';
+
+  @override
+  String get rootModeOutputTruncated => 'Output truncated';
+
+  @override
+  String get rootModeLog => 'Recent commands';
+
+  @override
+  String get rootModeLogEmpty => 'No commands yet';
+
+  @override
+  String get rootModeClear => 'Clear history';
+
+  @override
+  String get rootModeConfirmTitle => 'Allow this root command?';
+
+  @override
+  String get rootModeConfirmAllow => 'Allow';
+
+  @override
+  String get rootModeConfirmDeny => 'Deny';
+
+  @override
+  String get rootModeWarning =>
+      'With this on, the model can read and write /data, /system and other apps\' data, install modules and change system settings. A mistake can lose data, leak private files or leave the phone unable to boot. Back up first, and only do this on a device you own.';
+
+  @override
+  String get rootModeWarningAccept => 'I understand';
+
+  @override
   String get phoneRuntimeUpgradeBase =>
       'The new engine cannot be confirmed compatible with your Linux environment, so the update stopped. Your environment and installed tools were not deleted. Make a full backup and contact the maintainer for migration; do not reset or uninstall the app.';
 
