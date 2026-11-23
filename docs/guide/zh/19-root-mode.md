@@ -4,7 +4,7 @@
 
 ## 它解决什么
 
-原版 DSH Go 的 Linux 环境跑在 PRoot 里，`id` 显示 `uid=0` 只是 PRoot 的假象：真实进程仍是 App 的 uid，所以 `/data/data` 一律 `EACCES`。Root 模式让**单条命令**通过手机的 `su` 拿到真实 root，其他部分照旧。
+原版 DSH Go 的 Linux 环境跑在 PRoot 里，`id` 显示 `uid=0` 只是 PRoot 的假象：真实进程仍是 App 的 uid，所以 `/data/data` 一律 `EACCES`。Root 模式让单条命令通过手机的 `su` 拿到真实 root，其他部分照旧。
 
 ## 开启
 
@@ -44,10 +44,10 @@ sudo ls /data/data | head
 
 ## 边界
 
-- **不要碰**：`/data/adb`（管理器自身）、`/data/system`（锁屏与账户）、`/data/misc`（密钥）。Agent 的提示里写了，但提示不是强制。
-- **SELinux**：部分 ROM 的 `su` 域受限，`/data/data` 仍可能被拒；报错就是被拒。
-- **工作资料**：`/data/user/<id>` 需要对应权限，工作资料的数据不一定可达。
-- **系统更新**：改过 `/system` 的设备做 OTA 前先还原，否则可能无法开机。
+- 不要碰：`/data/adb`（管理器自身）、`/data/system`（锁屏与账户）、`/data/misc`（密钥）。Agent 的提示里写了，但提示不是强制。
+- SELinux：部分 ROM 的 `su` 域受限，`/data/data` 仍可能被拒；报错就是被拒。
+- 工作资料：`/data/user/<id>` 需要对应权限，工作资料的数据不一定可达。
+- 系统更新：改过 `/system` 的设备做 OTA 前先还原，否则可能无法开机。
 - **安全模式**：安全模式不写 shim、不开通道，root 模式整体不可用。
 
 ## 排查

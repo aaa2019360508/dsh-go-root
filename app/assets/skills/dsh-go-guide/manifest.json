@@ -21,6 +21,7 @@
     "zh-16-terminal.md": "zh/16-terminal.md",
     "zh-17-workspaces.md": "zh/17-workspaces.md",
     "zh-18-schedules.md": "zh/18-schedules.md",
+    "zh-19-root-mode.md": "zh/19-root-mode.md",
     "en-01-chat.md": "en/01-chat.md",
     "en-02-models.md": "en/02-models.md",
     "en-03-engine-hosts.md": "en/03-engine-hosts.md",
@@ -38,7 +39,8 @@
     "en-15-agents.md": "en/15-agents.md",
     "en-16-terminal.md": "en/16-terminal.md",
     "en-17-workspaces.md": "en/17-workspaces.md",
-    "en-18-schedules.md": "en/18-schedules.md"
+    "en-18-schedules.md": "en/18-schedules.md",
+    "en-19-root-mode.md": "en/19-root-mode.md"
   },
   "harmony": {
     "harmony-SKILL.md": "SKILL.md",

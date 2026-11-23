@@ -66,6 +66,7 @@ const _pages = {
   'page:phoneAndroidShell',
   'page:phoneDnd',
   'page:phoneUnlocks',
+  'page:rootMode',
 };
 const _rows = {
   'phone-a11y-restore',
