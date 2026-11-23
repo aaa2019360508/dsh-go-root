@@ -34752,6 +34752,36 @@ abstract class L10n {
   /// **'root,su,sudo,超级权限,最高权限,KernelSU,Magisk,APatch,data,/data,系统目录'**
   String get searchKwRootMode;
 
+  /// No description provided for @searchKwRootSwitch.
+  ///
+  /// In zh, this message translates to:
+  /// **'root 开关,开启 root,授权,root 权限'**
+  String get searchKwRootSwitch;
+
+  /// No description provided for @searchKwRootRefresh.
+  ///
+  /// In zh, this message translates to:
+  /// **'检测 root,检查 su,su 路径,管理器版本'**
+  String get searchKwRootRefresh;
+
+  /// No description provided for @searchKwRootScope.
+  ///
+  /// In zh, this message translates to:
+  /// **'访问范围,只读,读写,/data 权限'**
+  String get searchKwRootScope;
+
+  /// No description provided for @searchKwRootApproval.
+  ///
+  /// In zh, this message translates to:
+  /// **'确认方式,危险操作确认,每次确认,审批'**
+  String get searchKwRootApproval;
+
+  /// No description provided for @searchKwRootClear.
+  ///
+  /// In zh, this message translates to:
+  /// **'清空记录,root 日志,命令记录'**
+  String get searchKwRootClear;
+
   /// No description provided for @rootModeStatus.
   ///
   /// In zh, this message translates to:

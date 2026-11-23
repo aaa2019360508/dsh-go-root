@@ -70,6 +70,11 @@ const _pages = {
   'page:rootMode',
 };
 const _rows = {
+  'root-switch',
+  'root-refresh',
+  'root-scope',
+  'root-approval',
+  'root-clear',
   'phone-a11y-restore',
   'phone-confirm',
   'phone-auto-collapse',

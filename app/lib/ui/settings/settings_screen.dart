@@ -17,6 +17,7 @@ import '../../state/hosts_state.dart';
 import '../../state/phone_state.dart';
 import '../../state/plugins_state.dart';
 import '../../state/sessions_state.dart';
+import '../../state/root_state.dart';
 import '../../state/settings_state.dart';
 import '../../state/system_actions_state.dart';
 import '../../state/ui_mode_state.dart';
@@ -62,6 +63,7 @@ import 'notification_settings.dart';
 import 'performance_page.dart';
 import 'personalization_page.dart';
 import 'privacy_page.dart';
+import 'root_mode_page.dart';
 import 'search/settings_search_page.dart';
 import 'settings_widgets.dart';
 import 'system_access_page.dart';
@@ -109,6 +111,7 @@ class SettingsScreen extends ConsumerWidget {
         ? (replyPrefsSummary(ref) == null ? l10n.commonNotSet : l10n.hubValueSet)
         : null;
     // 能力.
+    final rootOn = android ? ref.watch(rootModeProvider.select((s) => s.status.enabled)) : null;
     final phone = android || ios ? ref.watch(phoneProvider) : null;
     final phoneValue = phone == null || !phone.loaded || !phone.status.ready
         ? null
@@ -189,6 +192,14 @@ class SettingsScreen extends ConsumerWidget {
                   ref.watch(systemActionsProvider.select((s) => s.enabled)) ? l10n.pluginsTurnedOn : l10n.hubValueOff,
                 ),
                 onTap: () => _push(context, const SystemActionsPage()),
+              ),
+            if (android)
+              SettingsTile(
+                icon: AppIcons.systemAccess,
+                tint: SettingsHues.abilities,
+                spot: SettingsIndex.entry(SettingsPageId.rootMode),
+                value: text(rootOn == null ? null : (rootOn ? l10n.pluginsTurnedOn : l10n.hubValueOff)),
+                onTap: () => _push(context, const RootModePage()),
               ),
             SettingsTile(
               icon: AppIcons.webSearch,

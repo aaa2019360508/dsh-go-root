@@ -787,6 +787,40 @@ abstract final class Spots {
     condition: SpotCondition.localHost,
   );
 
+  // Root 模式.
+  static final rootSwitch = SettingSpot(
+    'root-switch',
+    page: SettingsPageId.rootMode,
+    title: (l) => l.rootModeSwitch,
+    keywords: (l) => l.searchKwRootSwitch,
+    freq: Freq.high,
+  );
+  static final rootRefresh = SettingSpot(
+    'root-refresh',
+    page: SettingsPageId.rootMode,
+    title: (l) => l.rootModeRefresh,
+    keywords: (l) => l.searchKwRootRefresh,
+  );
+  static final rootScope = SettingSpot(
+    'root-scope',
+    page: SettingsPageId.rootMode,
+    title: (l) => l.rootModeScope,
+    keywords: (l) => l.searchKwRootScope,
+  );
+  static final rootApproval = SettingSpot(
+    'root-approval',
+    page: SettingsPageId.rootMode,
+    title: (l) => l.rootModeApproval,
+    keywords: (l) => l.searchKwRootApproval,
+    freq: Freq.medium,
+  );
+  static final rootClear = SettingSpot(
+    'root-clear',
+    page: SettingsPageId.rootMode,
+    title: (l) => l.rootModeClear,
+    keywords: (l) => l.searchKwRootClear,
+  );
+
   // 手机操控.
   static final phoneA11yRestore = SettingSpot(
     'phone-a11y-restore',
@@ -1278,6 +1312,11 @@ final _rows = <SettingSpot>[
   Spots.phoneFiles,
   Spots.permissionPhoneConfirm,
   Spots.visualReplies,
+  Spots.rootSwitch,
+  Spots.rootRefresh,
+  Spots.rootScope,
+  Spots.rootApproval,
+  Spots.rootClear,
   Spots.phoneA11yRestore,
   Spots.phoneConfirm,
   Spots.phoneAutoCollapse,

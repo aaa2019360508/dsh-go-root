@@ -19953,6 +19953,21 @@ class L10nEn extends L10n {
       'root,su,sudo,superuser,privilege,KernelSU,Magisk,APatch,data,/data,system directories';
 
   @override
+  String get searchKwRootSwitch => 'root switch,enable root,grant,superuser';
+
+  @override
+  String get searchKwRootRefresh => 'detect root,check su,su path,manager version';
+
+  @override
+  String get searchKwRootScope => 'scope,read-only,read-write,/data access';
+
+  @override
+  String get searchKwRootApproval => 'confirmation,confirm destructive,ask every time,approval';
+
+  @override
+  String get searchKwRootClear => 'clear log,root log,command history';
+
+  @override
   String get rootModeStatus => 'Status';
 
   @override
