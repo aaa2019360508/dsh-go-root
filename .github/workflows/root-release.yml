@@ -65,6 +65,10 @@ jobs:
           "$sdk/cmdline-tools/latest/bin/sdkmanager" \
             "platform-tools" "platforms;android-36" "build-tools;36.0.0" \
             "ndk;28.2.13676358" "cmake;3.22.1"
+          # The runner image exports ANDROID_NDK_HOME for its own default NDK; tawcroot and
+          # Gradle both pin 28.2.13676358, so point the environment at that one explicitly.
+          echo "ANDROID_NDK_HOME=$sdk/ndk/28.2.13676358" >> "$GITHUB_ENV"
+          echo "ANDROID_NDK_ROOT=$sdk/ndk/28.2.13676358" >> "$GITHUB_ENV"
           flutter config --no-analytics --android-sdk "$sdk"
           ls "$sdk/ndk"
 
