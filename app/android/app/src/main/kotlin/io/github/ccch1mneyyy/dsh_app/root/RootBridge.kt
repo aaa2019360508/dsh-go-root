@@ -150,8 +150,15 @@ class RootBridge(
             served.incrementAndGet()
             when (val op = request["op"] as? String) {
                 "exec" -> handleExec(output, request)
-                "read" -> end(output, shell.read(str(request["path"]) ?: "", int(request["maxBytes"]) ?: RootShell.DEFAULT_MAX_BYTES))
-                "write" -> end(output, shell.write(str(request["path"]) ?: "", str(request["base64"]) ?: "", request["append"] == true))
+                "read" -> end(
+                    output,
+                    shell.read(
+                        str(request["path"]) ?: "",
+                        (int(request["maxBytes"]) ?: RootShell.DEFAULT_MAX_BYTES)
+                            .coerceIn(1, RootShell.DEFAULT_MAX_BYTES),
+                    ),
+                )
+                "write" -> handleWrite(output, request)
                 "list" -> end(output, shell.list(str(request["path"]) ?: "/"))
                 "stat" -> end(output, shell.stat(str(request["path"]) ?: "/"))
                 "info" -> end(output, statusMap())
@@ -218,6 +225,48 @@ class RootBridge(
                 "error" to result.error,
             ),
         )
+    }
+
+    /**
+     * `dsh-root write` never goes through [RootPolicy.isReadOnly], so the read-only scope and the
+     * confirmation level have to be applied here — otherwise the switch would only stop the
+     * commands that look like writes, and the file channel would write anyway.
+     */
+    private fun handleWrite(output: OutputStream, request: Map<*, *>) {
+        val path = str(request["path"]).orEmpty()
+        if (path.isBlank()) {
+            reply(output, mapOf("end" to true, "ok" to false, "error" to "empty_path"))
+            return
+        }
+        RootPolicy.scopeRefusal("write", policy.writeAccess)?.let { refusal ->
+            RootPolicy.record(RootPolicy.Entry(System.currentTimeMillis(), "dsh-root write $path", -1, "read_only", 0))
+            reply(output, mapOf("end" to true, "ok" to false, "error" to refusal))
+            return
+        }
+        val probe = "dsh-root write $path"
+        policy.confirmReason(probe)?.let { reason ->
+            val allowed = try {
+                confirm(probe, reason)
+            } catch (_: Exception) {
+                false
+            }
+            if (!allowed) {
+                RootPolicy.record(RootPolicy.Entry(System.currentTimeMillis(), probe, -1, "denied", 0))
+                reply(output, mapOf("end" to true, "ok" to false, "error" to "denied_by_person"))
+                return
+            }
+        }
+        val started = System.nanoTime()
+        val result = shell.write(path, str(request["base64"]) ?: "", request["append"] == true)
+        RootPolicy.record(
+            RootPolicy.Entry(
+                System.currentTimeMillis(), probe,
+                if (result["ok"] == true) 0 else -1,
+                result["error"] as? String,
+                (System.nanoTime() - started) / 1_000_000,
+            ),
+        )
+        end(output, result)
     }
 
     fun statusMap(): Map<String, Any?> = mapOf(

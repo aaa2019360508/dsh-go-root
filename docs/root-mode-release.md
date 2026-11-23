@@ -11,13 +11,29 @@
 - **Agent 提示**：开启后 `AGENTS.md` 多一节「Root 模式」，说明能做什么、哪些目录不要碰。
 - **记录**：最近 200 条 root 命令（命令、退出码、是否被拒、耗时）留在内存里，设置页可查可清。
 
+### root.2 修复
+
+- **只读范围漏了文件通道**：`dsh-root write` 不是一条命令行，走不到 `isReadOnly` 的判断，之前无论访问范围设成什么都照写不误，也不弹确认。现在它和 `exec` 走同一道门：只读时直接回 `read_only_scope`（不调 `su`），「每次确认」时照样弹窗，被拒记进命令记录。
+- `dsh-root read` 的 `maxBytes` 现在夹在 4 MB 以内，客户端传多大的数都不会把整个大文件读进内存。
+
 ### 怎么实现
 
 不把整个引擎跑在 root 下，只提权单条命令：引擎仍是 App uid，`sudo` 走抽象 unix socket 到 App，App 用 `su -c` 执行（Magisk / KernelSU / APatch 同一种写法），超时就杀进程。每次启动随机生成 socket 名与 token，写在 `/var/lib/dsh-app/root/bridge.json`（0600）；引擎停止即关闭通道；安全模式不写 shim、不开通道。
 
 ### 源码
 
-补丁在 `root-mode.patch`，说明在 `ROOT-MODE.md`，指南在 `root-mode-guide-zh.md` / `root-mode-guide-en.md`。
+| 文件 | 内容 |
+|---|---|
+| `root-mode.patch` | 相对上游 `5a3e95d` 的完整补丁：54 个文件 / +3571 行，含 17 张 golden 基线，`git apply` 一次到位 |
+| `ROOT-MODE.md` | 设计与取舍 |
+| `root-mode-guide-zh.md` · `root-mode-guide-en.md` | 使用指南（中 / 英） |
+| `SHA256SUMS` | 以上附件与 APK 的 SHA-256 |
+
+```bash
+git clone https://github.com/ccch1mneyyy/dsh-Go.git && cd dsh-Go
+git checkout 5a3e95d
+git apply root-mode.patch
+```
 
 ### 安装
 

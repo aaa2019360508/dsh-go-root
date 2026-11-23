@@ -152,6 +152,14 @@ class RootPolicy private constructor(private val prefs: SharedPreferences) {
             }
         }
 
+        /**
+         * The scope gate for the file channel. [isReadOnly] answers for shell command lines;
+         * `dsh-root write` is an operation rather than a command line, so it is decided here —
+         * otherwise the read-only switch would stop `echo > file` but not the file channel.
+         */
+        fun scopeRefusal(op: String, writeAccess: Boolean): String? =
+            if (op == "write" && !writeAccess) "read_only_scope" else null
+
         /** Newest-first audit trail, in memory only: it is a debugging aid, not a log file. */
         private const val LOG_LIMIT = 200
         private val log = Collections.synchronizedList(ArrayList<Entry>())
