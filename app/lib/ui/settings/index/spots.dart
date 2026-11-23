@@ -68,6 +68,7 @@ enum SettingsPageId {
   replyPrefs,
   agentPresets,
   phone,
+  rootMode,
   phoneAppRules,
   phoneAlwaysAllow,
   phoneAndroidShell,
@@ -427,6 +428,15 @@ final _pages = <SettingsPageMeta>[
     links: const ['phone'],
     androidOnly: true,
     iosToo: true,
+  ),
+  SettingsPageMeta(
+    SettingsPageId.rootMode,
+    title: (l) => l.rootModeTitle,
+    group: _abilities,
+    keywords: (l) => l.searchKwRootMode,
+    freq: Freq.low,
+    links: const ['root', 'root-mode'],
+    androidOnly: true,
   ),
   SettingsPageMeta(
     SettingsPageId.systemActions,

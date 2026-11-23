@@ -167,6 +167,7 @@ object GuestSetup {
         phoneControl: Boolean = false,
         visualReplies: Boolean = true,
         directEngine: Boolean = false,
+        rootMode: Boolean = false,
         nativeLocale: String = "zh-CN",
     ) {
         try {
@@ -209,6 +210,9 @@ object GuestSetup {
                 if (english) DSH_UI_SECTION_EN else DSH_UI_SECTION
             } else "") + (if (phoneControl) {
                 if (english) PhoneGuest.AGENTS_SECTION_EN else PhoneGuest.AGENTS_SECTION
+            } else "") + (if (rootMode) {
+                if (english) io.github.ccch1mneyyy.dsh_app.root.RootGuest.AGENTS_SECTION_EN
+                else io.github.ccch1mneyyy.dsh_app.root.RootGuest.AGENTS_SECTION
             } else "") + (if (english) DIAGNOSTICS_SECTION_EN else DIAGNOSTICS_SECTION).replace(
                 "{PATH}",
                 if (directEngine) "${rootfs.canonicalPath}/root/.dsh/dsh-app/diagnostics.md"

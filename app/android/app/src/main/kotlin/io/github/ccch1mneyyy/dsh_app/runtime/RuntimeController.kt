@@ -140,6 +140,13 @@ class RuntimeController private constructor(private val app: Context) : DshProce
     internal fun shouldAutoStart(autoStart: Boolean): Boolean =
         LaunchStart.shouldStart(autoStart, phase.wire, safeState.wire, autoSafe(), strikes)
 
+    /** The rootfs the installed runtime uses, for pages that change the guest without a restart. */
+    internal fun rootfsForRootMode(): java.io.File? = try {
+        installer.rootfs.takeIf { installer.isCurrent() }
+    } catch (_: Exception) {
+        null
+    }
+
     fun status(): Map<String, Any?> = mapOf(
         "abi" to (runCatching { manifest.abi }.getOrNull() ?: Build.SUPPORTED_ABIS.firstOrNull()),
         "bundledVersion" to runCatching { manifest.runtimeVersion }.getOrNull(),
@@ -579,6 +586,12 @@ class RuntimeController private constructor(private val app: Context) : DshProce
                 if (!safe && !authOverlay) {
                     log("[dsh-app] subscription sign-in overlay not written; ChatGPT / Claude sign-in is unavailable", "system")
                 }
+                // Root mode: bridge up and guest shims written before DSH starts; never in safe mode.
+                val rootMode = !safe && io.github.ccch1mneyyy.dsh_app.root.RootControl.get(app)
+                    .prepareLaunch(installer.rootfs)
+                if (!safe && io.github.ccch1mneyyy.dsh_app.root.RootControl.enabled(app) && !rootMode) {
+                    log("[dsh-app] root mode is on but the guest shims were not written; the engine runs without su", "system")
+                }
                 val speechOverlay = !safe && SpeechGuest.writeFiles(installer.rootfs)
                 if (!safe && !speechOverlay) {
                     log("[dsh-app] voice input overlay not written; the voice model keeps DSH's defaults", "system")
@@ -642,6 +655,7 @@ class RuntimeController private constructor(private val app: Context) : DshProce
                 } ?: run {
                     launchStore?.close()
                     PhoneControl.get(app).onEngineStopped()
+                    io.github.ccch1mneyyy.dsh_app.root.RootControl.get(app).onEngineStopped()
                     return@execute
                 }
                 timeline.spawned()
@@ -652,6 +666,7 @@ class RuntimeController private constructor(private val app: Context) : DshProce
                     // SafeMode.prepare writes its own briefing; leave the original home untouched.
                     if (!safe) GuestSetup.writeAgentsMd(
                         installer.rootfs, storage, phone && PhoneControl.switchedOn(app), pendingVisualReplies, actualDirect,
+                        rootMode = rootMode,
                         nativeLocale = if (AppStrings.isEnglish(app)) "en" else "zh-CN",
                     )
                 }
@@ -666,6 +681,7 @@ class RuntimeController private constructor(private val app: Context) : DshProce
                     if (gen != runGen) return@execute
                     process = null
                     PhoneControl.get(app).onEngineStopped()
+                    io.github.ccch1mneyyy.dsh_app.root.RootControl.get(app).onEngineStopped()
                     if (launched?.tawc == true && stopGen < gen && !resetting) {
                         // A tawcroot start that threw: the same fallback as onExit's, unless
                         // onExit (through awaitExit) already took it.
@@ -1140,6 +1156,7 @@ class RuntimeController private constructor(private val app: Context) : DshProce
             else if (!expected && stopGen < runGen) source.launchDiagnostics.failed("exit:$code")
             process = null
             PhoneControl.get(app).onEngineStopped()
+                    io.github.ccch1mneyyy.dsh_app.root.RootControl.get(app).onEngineStopped()
             baseUrl = null
             token = null
             healthyAt = null

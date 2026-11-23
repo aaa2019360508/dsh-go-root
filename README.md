@@ -3,6 +3,12 @@
 </p>
 
 <p align="center">
+  <b>本仓库是社区补丁：加了 Root 模式（KernelSU / Magisk / APatch），让 AI Agent 直接读写 /data。</b><br>
+  <sub>新增：设置 › 能力 › Root 模式 · <code>sudo</code> / <code>su</code> / <code>dsh-root</code> 访客 shim · 只读范围 · 危险命令确认 ·
+  <a href="ROOT-MODE.md">说明</a> · <a href="docs/guide/zh/19-root-mode.md">使用指南</a> · 上游：<a href="https://github.com/ccch1mneyyy/dsh-Go">ccch1mneyyy/dsh-Go</a></sub>
+</p>
+
+<p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="docs/assets/hero-zh-dark.webp">
     <img src="docs/assets/hero-zh-light.webp" alt="DSH Go：把 DeepSeek Harness 装进口袋" width="100%">
