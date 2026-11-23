@@ -35,7 +35,7 @@ sudo ls /data/data | head
 
 | 设置 | 说明 |
 | --- | --- |
-| 访问范围 | **读写**：全部放行。**只读**：非只读命令在调用 `su` 之前被拒（返回 `read_only_scope`）。只读判定按命令首词：`ls/cat/grep/find/stat/dumpsys/pm list…` 放行；含 `>`、`-delete`、`rm/mv/cp/chmod`、`su/sh -c/xargs` 一律算写。 |
+| 访问范围 | **读写**：全部放行。**只读**：非只读命令在调用 `su` 之前被拒（返回 `read_only_scope`）。只读判定按命令首词：`ls/cat/grep/find/stat/dumpsys/pm list…` 放行；含 `>`、`-delete`、`rm/mv/cp/chmod`、`su/sh -c/xargs` 一律算写。`dsh-root write` 不经过这套判定，但同样被拒。 |
 | 确认方式 | **不确认**：开关即授权。**危险操作确认**（默认）：命中破坏性命令时弹窗。**每次确认**：每条 root 命令都弹窗。 |
 | 超时 | 命令默认 120 秒，最长 10 分钟；超时杀进程，返回 `124`。 |
 | 输出 | 单条命令最多 4 MB，超出截断并标记 `truncated`。 |

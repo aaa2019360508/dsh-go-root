@@ -41,7 +41,7 @@ ten minutes.
 
 | Setting | Meaning |
 | --- | --- |
-| Scope | **Read-write**: everything. **Read-only**: commands that are not read-only are refused before `su` runs (`read_only_scope`). The check looks at the first word of each segment: `ls/cat/grep/find/stat/dumpsys/pm list…` pass; `>`, `-delete`, `rm/mv/cp/chmod`, `su/sh -c/xargs` count as writes. |
+| Scope | **Read-write**: everything. **Read-only**: commands that are not read-only are refused before `su` runs (`read_only_scope`). The check looks at the first word of each segment: `ls/cat/grep/find/stat/dumpsys/pm list…` pass; `>`, `-delete`, `rm/mv/cp/chmod`, `su/sh -c/xargs` count as writes. `dsh-root write` skips that check but is refused all the same. |
 | Confirmation | Never: the switch is the only gate. Destructive (default): a prompt when the command matches the destructive list. Always: a prompt for every root command. |
 | Timeout | 120 s by default, 10 min maximum; on timeout the process is killed and the call returns `124`. |
 | Output | 4 MB per command; the rest is dropped and flagged `truncated`. |

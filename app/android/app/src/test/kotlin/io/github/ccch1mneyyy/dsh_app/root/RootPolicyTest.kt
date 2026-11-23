@@ -1,6 +1,8 @@
 package io.github.ccch1mneyyy.dsh_app.root
 
+import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
+import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
@@ -73,6 +75,22 @@ class RootPolicyTest {
             "pm list packages -3",
         )) {
             assertFalse(command, RootPolicy.isDestructive(command))
+        }
+    }
+
+    /**
+     * The file channel is the one write that is not a command line, so `isReadOnly` never sees it.
+     * Read-only scope has to refuse it here, or `dsh-root write /data/...` would go straight
+     * through the switch the person turned on.
+     */
+    @Test fun readOnlyScopeRefusesTheFileChannelWrite() {
+        assertEquals("read_only_scope", RootPolicy.scopeRefusal("write", writeAccess = false))
+        assertNull(RootPolicy.scopeRefusal("write", writeAccess = true))
+    }
+
+    @Test fun readOnlyScopeStillAllowsReadingTheFileChannel() {
+        for (op in listOf("read", "list", "stat", "info", "exec")) {
+            assertNull(op, RootPolicy.scopeRefusal(op, writeAccess = false))
         }
     }
 }
