@@ -31,6 +31,7 @@ import 'package:dsh_app/ui/settings/interface_page.dart';
 import 'package:dsh_app/ui/settings/performance_page.dart';
 import 'package:dsh_app/ui/settings/personalization_page.dart';
 import 'package:dsh_app/ui/settings/privacy_page.dart';
+import 'package:dsh_app/ui/settings/root_mode_page.dart';
 import 'package:dsh_app/ui/settings/settings_screen.dart';
 import 'package:dsh_app/state/app_info.dart';
 import 'package:dsh_app/ui/settings/index/spots.dart';
@@ -275,6 +276,16 @@ void main() {
 
   testWidgets('本机引擎', (tester) async {
     await _check(tester, SettingsPageId.engine, () => _app(tester, const EngineScreen(), _running()));
+  });
+
+  testWidgets('Root 模式', (tester) async {
+    await _check(
+      tester,
+      SettingsPageId.rootMode,
+      () => _app(tester, const RootModePage(), _running()),
+      // Only once a command has run.
+      absent: {'root-clear'},
+    );
   });
 
   testWidgets('手机操控', (tester) async {

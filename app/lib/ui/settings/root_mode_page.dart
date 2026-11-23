@@ -64,6 +64,7 @@ class _RootModePageState extends ConsumerState<RootModePage> {
           children: [
             SettingsSwitchTile(
               icon: AppIcons.systemAccess,
+              spot: Spots.rootSwitch,
               title: l10n.rootModeSwitch,
               subtitle: status.enabled ? l10n.rootModeSwitchOn : l10n.rootModeSwitchOff,
               value: status.enabled,
@@ -71,6 +72,7 @@ class _RootModePageState extends ConsumerState<RootModePage> {
             ),
             SettingsTile(
               icon: AppIcons.search,
+              spot: Spots.rootRefresh,
               title: l10n.rootModeRefresh,
               subtitle: _detailText(l10n, status),
               trailing: state.loading
@@ -94,6 +96,7 @@ class _RootModePageState extends ConsumerState<RootModePage> {
           children: [
             SettingsSegmentTile<bool>(
               icon: AppIcons.fileAccess,
+              spot: Spots.rootScope,
               title: l10n.rootModeScope,
               segments: [
                 PillSegment(true, l10n.rootModeScopeWrite),
@@ -104,6 +107,7 @@ class _RootModePageState extends ConsumerState<RootModePage> {
             ),
             SettingsSegmentTile<RootApproval>(
               icon: AppIcons.approval,
+              spot: Spots.rootApproval,
               title: l10n.rootModeApproval,
               segments: [
                 PillSegment(RootApproval.off, l10n.rootModeApprovalOff),
@@ -169,6 +173,7 @@ class _RootModePageState extends ConsumerState<RootModePage> {
             if (status.logs.isNotEmpty)
               SettingsTile(
                 icon: AppIcons.delete,
+                spot: Spots.rootClear,
                 title: l10n.rootModeClear,
                 onTap: () => unawaited(controller.clearLog()),
               ),

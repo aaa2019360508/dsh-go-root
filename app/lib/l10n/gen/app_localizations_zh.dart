@@ -18518,6 +18518,21 @@ class L10nZh extends L10n {
   String get searchKwRootMode => 'root,su,sudo,超级权限,最高权限,KernelSU,Magisk,APatch,data,/data,系统目录';
 
   @override
+  String get searchKwRootSwitch => 'root 开关,开启 root,授权,root 权限';
+
+  @override
+  String get searchKwRootRefresh => '检测 root,检查 su,su 路径,管理器版本';
+
+  @override
+  String get searchKwRootScope => '访问范围,只读,读写,/data 权限';
+
+  @override
+  String get searchKwRootApproval => '确认方式,危险操作确认,每次确认,审批';
+
+  @override
+  String get searchKwRootClear => '清空记录,root 日志,命令记录';
+
+  @override
   String get rootModeStatus => '状态';
 
   @override

@@ -1,7 +1,7 @@
 # Root mode
 
-> Android only, and only on a device you own. With this on, the model can read and write `/data`,
-> `/system` and other apps' data.
+> Android only, and only on a device you own (HarmonyOS and iOS have no such page). With this on,
+> the model can read and write `/data`, `/system` and other apps' data.
 
 ## What it changes
 
@@ -12,7 +12,7 @@ phone's `su` to get real root. Everything else is unchanged.
 ## Turn it on
 
 1. The phone is rooted: KernelSU, Magisk or APatch.
-2. Settings → Abilities → **Root mode** → read the warning → turn it on.
+2. Settings → Abilities → Root mode → read the warning → turn it on.
 3. Tap “Check root”. Choose “Allow (permanently)” in the manager's prompt; “Allow once” works too
    but the manager asks again on the next start.
 4. Verify in the terminal:
