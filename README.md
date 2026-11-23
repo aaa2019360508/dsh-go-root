@@ -9,6 +9,11 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/aaa2019360508/dsh-go-root/releases/latest"><b>⬇ 下载 arm64 APK（含 Root 模式）</b></a><br>
+  <sub>本包用 debug 签名，装过官方版的手机需先卸载官方版再安装；数据不会自动迁移。</sub>
+</p>
+
+<p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="docs/assets/hero-zh-dark.webp">
     <img src="docs/assets/hero-zh-light.webp" alt="DSH Go：把 DeepSeek Harness 装进口袋" width="100%">
