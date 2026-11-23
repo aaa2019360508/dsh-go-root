@@ -14,6 +14,7 @@ import '../../l10n/l10n.dart';
 import '../../root/root_channel.dart';
 import '../../state/root_state.dart';
 import '../shell/page_frame.dart';
+import '../theme/app_icons.dart';
 import 'settings_widgets.dart';
 
 class RootModePage extends ConsumerStatefulWidget {
@@ -62,14 +63,14 @@ class _RootModePageState extends ConsumerState<RootModePage> {
           title: l10n.rootModeStatus,
           children: [
             SettingsSwitchTile(
-              icon: Icons.admin_panel_settings_outlined,
+              icon: AppIcons.systemAccess,
               title: l10n.rootModeSwitch,
               subtitle: status.enabled ? l10n.rootModeSwitchOn : l10n.rootModeSwitchOff,
               value: status.enabled,
               onChanged: state.loading ? null : (value) => unawaited(controller.setEnabled(value)),
             ),
             SettingsTile(
-              icon: Icons.search,
+              icon: AppIcons.search,
               title: l10n.rootModeRefresh,
               subtitle: _detailText(l10n, status),
               trailing: state.loading
@@ -92,7 +93,7 @@ class _RootModePageState extends ConsumerState<RootModePage> {
           footer: Text(l10n.rootModeScopeHint),
           children: [
             SettingsSegmentTile<bool>(
-              icon: Icons.shield_outlined,
+              icon: AppIcons.fileAccess,
               title: l10n.rootModeScope,
               segments: [
                 PillSegment(true, l10n.rootModeScopeWrite),
@@ -102,7 +103,7 @@ class _RootModePageState extends ConsumerState<RootModePage> {
               onChanged: (value) => unawaited(controller.setPolicy(writeAccess: value)),
             ),
             SettingsSegmentTile<RootApproval>(
-              icon: Icons.fact_check_outlined,
+              icon: AppIcons.approval,
               title: l10n.rootModeApproval,
               segments: [
                 PillSegment(RootApproval.off, l10n.rootModeApprovalOff),
@@ -167,7 +168,7 @@ class _RootModePageState extends ConsumerState<RootModePage> {
                 ),
             if (status.logs.isNotEmpty)
               SettingsTile(
-                icon: Icons.delete_outline,
+                icon: AppIcons.delete,
                 title: l10n.rootModeClear,
                 onTap: () => unawaited(controller.clearLog()),
               ),
@@ -256,7 +257,7 @@ class _WarningCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              Icon(Icons.warning_amber_rounded, size: 18, color: scheme.onErrorContainer),
+              Icon(AppIcons.warning, size: 18, color: scheme.onErrorContainer),
               const SizedBox(width: 8),
               Expanded(
                 child: Text(

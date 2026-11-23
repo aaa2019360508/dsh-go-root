@@ -436,7 +436,7 @@ final _pages = <SettingsPageMeta>[
     group: _abilities,
     keywords: (l) => l.searchKwRootMode,
     freq: Freq.low,
-    links: const ['root', 'root-mode'],
+    links: const ['root'],
     androidOnly: true,
   ),
   SettingsPageMeta(

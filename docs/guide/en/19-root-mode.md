@@ -6,7 +6,7 @@
 ## What it changes
 
 The Linux environment runs under PRoot, where `id` says `uid=0` but the real process is still the
-app's uid — so `/data/data` answers `EACCES`. Root mode sends **single commands** through the
+app's uid — so `/data/data` answers `EACCES`. Root mode sends single commands through the
 phone's `su` to get real root. Everything else is unchanged.
 
 ## Turn it on
@@ -42,7 +42,7 @@ ten minutes.
 | Setting | Meaning |
 | --- | --- |
 | Scope | **Read-write**: everything. **Read-only**: commands that are not read-only are refused before `su` runs (`read_only_scope`). The check looks at the first word of each segment: `ls/cat/grep/find/stat/dumpsys/pm list…` pass; `>`, `-delete`, `rm/mv/cp/chmod`, `su/sh -c/xargs` count as writes. |
-| Confirmation | **Never**: the switch is the only gate. **Destructive** (default): a prompt when the command matches the destructive list. **Always**: a prompt for every root command. |
+| Confirmation | Never: the switch is the only gate. Destructive (default): a prompt when the command matches the destructive list. Always: a prompt for every root command. |
 | Timeout | 120 s by default, 10 min maximum; on timeout the process is killed and the call returns `124`. |
 | Output | 4 MB per command; the rest is dropped and flagged `truncated`. |
 
@@ -51,11 +51,11 @@ silently allowed.
 
 ## Limits
 
-- **Do not touch** `/data/adb` (the manager itself), `/data/system` (lock screen and accounts) or
+- Do not touch `/data/adb` (the manager itself), `/data/system` (lock screen and accounts) or
   `/data/misc` (keys). The agent is told, but a prompt is not a sandbox.
-- **SELinux**: on some ROMs the `su` domain is restricted and `/data/data` is still refused.
-- **Work profile**: `/data/user/<id>` needs the matching permission; work data may be unreachable.
-- **OTA**: restore `/system` before a system update, or the device may not boot.
+- SELinux: on some ROMs the `su` domain is restricted and `/data/data` is still refused.
+- Work profile: `/data/user/<id>` needs the matching permission; work data may be unreachable.
+- OTA: restore `/system` before a system update, or the device may not boot.
 - **Safe mode**: no shims, no channel — root mode is unavailable there.
 
 ## Troubleshooting

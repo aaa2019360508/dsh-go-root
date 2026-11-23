@@ -119,6 +119,9 @@ class ProcessLaunchGuardTest {
         "app/android/app/src/main/kotlin/io/github/ccch1mneyyy/dsh_app/phone/background/RootProcess.kt",
         // Explicitly authorized Android Shell: Java-owned helper and its bounded child shell.
         "app/android/app/src/main/kotlin/io/github/ccch1mneyyy/dsh_app/phone/shell/AndroidShellProcess.kt",
+        // Root mode's `su -c <one command>`: one Java ProcessBuilder child per command, so the
+        // same fd-closing launcher applies; output is bounded and the child is killed on timeout.
+        "app/android/app/src/main/kotlin/io/github/ccch1mneyyy/dsh_app/root/RootShell.kt",
         // The bounded privileged logcat reader also uses Java's fd-closing launcher.
         // The test below restricts this owner to one fixed-command ProcessBuilder.
         diagnosticJavaOwner,

@@ -208,7 +208,7 @@ void main() {
           for (final id in SettingsIndex.linkIds)
             if (SettingsIndex.androidOnlyLink(SettingsIndex.ohosLink(id))) id,
         };
-        expect(left, {'phone-files'});
+        expect(left, {'phone-files', 'root'});
       });
 
       testWidgets('a page nobody has is still the router\'s to say', (tester) async {
