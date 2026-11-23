@@ -3,6 +3,17 @@
 </p>
 
 <p align="center">
+  <b>Community patch: Root mode (KernelSU / Magisk / APatch) lets the agent read and write <code>/data</code>.</b><br>
+  <sub>Settings › Abilities › Root mode · <code>sudo</code> / <code>su</code> / <code>dsh-root</code> guest shims · read-only scope · confirmation for destructive commands ·
+  <a href="ROOT-MODE.md">design</a> · <a href="docs/guide/en/19-root-mode.md">guide</a> · upstream: <a href="https://github.com/ccch1mneyyy/dsh-Go">ccch1mneyyy/dsh-Go</a></sub>
+</p>
+
+<p align="center">
+  <a href="https://github.com/aaa2019360508/dsh-go-root/releases/latest"><b>⬇ Download the arm64 APK (root mode included)</b></a><br>
+  <sub>Signed with the debug key: uninstall the official build before installing; data is not migrated.</sub>
+</p>
+
+<p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="docs/assets/hero-en-dark.webp">
     <img src="docs/assets/hero-en-light.webp" alt="DSH Go: DeepSeek Harness, in your pocket" width="100%">
