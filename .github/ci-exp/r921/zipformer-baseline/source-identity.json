@@ -1,0 +1,21 @@
+{
+  "note": "原始结果另存runner可执行件SHA；此清单在完成Run后、修改通用入口前保存当时源文本。没有额外重跑模型。",
+  "files": {
+    "zipformer_probe.py": {
+      "bytes": 15347,
+      "sha256": "b4549f6bb335dd7cbebd4f66150b06d097701928b1bd29bf643377fb9de6ca09"
+    },
+    "ort_runner.cc": {
+      "bytes": 8158,
+      "sha256": "561be163398f62b5ddf46eff422376b4a9b9b4523047b855b9b3b729016fc797"
+    },
+    "ort_client.py": {
+      "bytes": 4517,
+      "sha256": "1d9c0c2c9b65fe45a6742a3db4b3a8736022972f8dbcba8e2b3ea677ffcc43bf"
+    },
+    "zipformer-inputs.json": {
+      "bytes": 1240,
+      "sha256": "50a7eaed2969bde47cdc2bae8d90958161a41b34c0938732919053603fc34db6"
+    }
+  }
+}

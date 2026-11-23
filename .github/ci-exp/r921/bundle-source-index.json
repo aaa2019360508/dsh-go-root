@@ -1,0 +1,152 @@
+{
+  "productCommit": "567390d1f943777ac8f8e9c3abbbbe346821e5d1",
+  "ortCommit": "8f0278c77bf44b0cc83c098c6c722b92a36ac4b5",
+  "ortTree": "5ea4a49d0be5e5a620cabaa01f85d924b2fa5995",
+  "files": [
+    {
+      "bytes": 34523,
+      "sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+      "gitBlob": "be3f7b28e564e7dd05eaf59d64adba1a4065ac0e",
+      "origin": "product",
+      "revision": "567390d1f943777ac8f8e9c3abbbbe346821e5d1",
+      "sourcePath": "LICENSE",
+      "url": "https://github.com/ccch1mneyyy/dsh-go/blob/567390d1f943777ac8f8e9c3abbbbe346821e5d1/LICENSE",
+      "bundlePath": "LICENSE/product-AGPL-3.0.txt"
+    },
+    {
+      "bytes": 1073,
+      "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c",
+      "gitBlob": "48bc6bb4996ac924359e8e28b9ae88970e5ed3fc",
+      "origin": "ort",
+      "revision": "8f0278c77bf44b0cc83c098c6c722b92a36ac4b5",
+      "sourcePath": "LICENSE",
+      "url": "https://github.com/intel/onnxruntime/blob/8f0278c77bf44b0cc83c098c6c722b92a36ac4b5/LICENSE",
+      "bundlePath": "LICENSE/onnxruntime-MIT.txt"
+    },
+    {
+      "bytes": 6011,
+      "sha256": "5a9df8016701921db02cf315b15ec73ab367a29de4bd679c4395f7b5ea9447b8",
+      "gitBlob": "46d6f2d19c41809d3de435478b5b41bc1ebab469",
+      "origin": "product",
+      "revision": "567390d1f943777ac8f8e9c3abbbbe346821e5d1",
+      "sourcePath": "app/android/app/src/main/kotlin/io/github/ccch1mneyyy/dsh_app/nativemedia/WhisperMel.kt",
+      "url": "https://github.com/ccch1mneyyy/dsh-go/blob/567390d1f943777ac8f8e9c3abbbbe346821e5d1/app/android/app/src/main/kotlin/io/github/ccch1mneyyy/dsh_app/nativemedia/WhisperMel.kt",
+      "bundlePath": "product/WhisperMel.kt"
+    },
+    {
+      "bytes": 6004,
+      "sha256": "358059c58da1019b63c8a585eb3fda748e3774b5c166959225cd6dbb3ed16997",
+      "gitBlob": "1fbbfe005248b009493c20beba70ded195280a16",
+      "origin": "product",
+      "revision": "567390d1f943777ac8f8e9c3abbbbe346821e5d1",
+      "sourcePath": "app/android/app/src/main/kotlin/io/github/ccch1mneyyy/dsh_app/companion/CompanionWordPiece.kt",
+      "url": "https://github.com/ccch1mneyyy/dsh-go/blob/567390d1f943777ac8f8e9c3abbbbe346821e5d1/app/android/app/src/main/kotlin/io/github/ccch1mneyyy/dsh_app/companion/CompanionWordPiece.kt",
+      "bundlePath": "product/CompanionWordPiece.kt"
+    },
+    {
+      "bytes": 392016,
+      "sha256": "c4ed26d7bbc7b649c1c38622424d88dfb1a28e3d3594c5f1456cf458814e8381",
+      "gitBlob": "793cdd505aaa3f362e2d29dbae2e8b00e31742f8",
+      "origin": "ort",
+      "revision": "8f0278c77bf44b0cc83c098c6c722b92a36ac4b5",
+      "sourcePath": "include/onnxruntime/core/session/onnxruntime_c_api.h",
+      "url": "https://github.com/intel/onnxruntime/blob/8f0278c77bf44b0cc83c098c6c722b92a36ac4b5/include/onnxruntime/core/session/onnxruntime_c_api.h",
+      "bundlePath": "include/onnxruntime_c_api.h"
+    },
+    {
+      "bytes": 149810,
+      "sha256": "f65ac849718cabe3ff4902698dd2de643c3b3dbe0010242b2b0407548e7ee00c",
+      "gitBlob": "6824b85ba300114ee1fd2db64098b17f5f65b80b",
+      "origin": "ort",
+      "revision": "8f0278c77bf44b0cc83c098c6c722b92a36ac4b5",
+      "sourcePath": "include/onnxruntime/core/session/onnxruntime_ep_c_api.h",
+      "url": "https://github.com/intel/onnxruntime/blob/8f0278c77bf44b0cc83c098c6c722b92a36ac4b5/include/onnxruntime/core/session/onnxruntime_ep_c_api.h",
+      "bundlePath": "include/onnxruntime_ep_c_api.h"
+    },
+    {
+      "bytes": 46563,
+      "sha256": "1380bc1c065eadfff7191b6dd6dcb8b1cacd00204be28cdb5745ac3dc7ba3f02",
+      "gitBlob": "e0ee8dddbac1bde4cb106b941d38e0d0225b7359",
+      "origin": "ort",
+      "revision": "8f0278c77bf44b0cc83c098c6c722b92a36ac4b5",
+      "sourcePath": "tools/ci_build/build_args.py",
+      "url": "https://github.com/intel/onnxruntime/blob/8f0278c77bf44b0cc83c098c6c722b92a36ac4b5/tools/ci_build/build_args.py",
+      "bundlePath": null
+    },
+    {
+      "bytes": 118396,
+      "sha256": "86e310a44adc100801cbd7d6514d519e79a8bee63f937581f4344dd7a4f4f448",
+      "gitBlob": "310bf67928f466ffc13c82f20af4e8492bc82323",
+      "origin": "ort",
+      "revision": "8f0278c77bf44b0cc83c098c6c722b92a36ac4b5",
+      "sourcePath": "tools/ci_build/build.py",
+      "url": "https://github.com/intel/onnxruntime/blob/8f0278c77bf44b0cc83c098c6c722b92a36ac4b5/tools/ci_build/build.py",
+      "bundlePath": null
+    },
+    {
+      "bytes": 14384,
+      "sha256": "31b1496e38d8ea42532a3647f70b27ffbf0a0da153d7ba010e6a85c5404c690d",
+      "gitBlob": "c917c544a557ca049aef0fda72056749d222d0a9",
+      "origin": "ort",
+      "revision": "8f0278c77bf44b0cc83c098c6c722b92a36ac4b5",
+      "sourcePath": "tools/ci_build/reduce_op_kernels.py",
+      "url": "https://github.com/intel/onnxruntime/blob/8f0278c77bf44b0cc83c098c6c722b92a36ac4b5/tools/ci_build/reduce_op_kernels.py",
+      "bundlePath": null
+    },
+    {
+      "bytes": 87138,
+      "sha256": "d1436e0e9480f5f4ccc3d1e3850b9f68812a056c572f8bab9d5fd80a033cced9",
+      "gitBlob": "f1126c2dce79ec906883b61b2c4dc5990bd00224",
+      "origin": "ort",
+      "revision": "8f0278c77bf44b0cc83c098c6c722b92a36ac4b5",
+      "sourcePath": "cmake/CMakeLists.txt",
+      "url": "https://github.com/intel/onnxruntime/blob/8f0278c77bf44b0cc83c098c6c722b92a36ac4b5/cmake/CMakeLists.txt",
+      "bundlePath": null
+    },
+    {
+      "bytes": 22812,
+      "sha256": "4f73825c1782b0309cbad11d04c1a8ae5d7460b2464e08905064dcb11fdcd9c6",
+      "gitBlob": "146e37f8ecda871ca71b72d82c396d63c16db266",
+      "origin": "ort",
+      "revision": "8f0278c77bf44b0cc83c098c6c722b92a36ac4b5",
+      "sourcePath": "cmake/onnxruntime.cmake",
+      "url": "https://github.com/intel/onnxruntime/blob/8f0278c77bf44b0cc83c098c6c722b92a36ac4b5/cmake/onnxruntime.cmake",
+      "bundlePath": null
+    },
+    {
+      "bytes": 7137,
+      "sha256": "e411468ead299e3386b2e5e9d773e50e1939b5fc0baca599666ca5757eeb3f71",
+      "gitBlob": "5a835e0c6fe9f3587061bc27d672ffed6afdc76f",
+      "origin": "ort",
+      "revision": "8f0278c77bf44b0cc83c098c6c722b92a36ac4b5",
+      "sourcePath": "cmake/deps.txt",
+      "url": "https://github.com/intel/onnxruntime/blob/8f0278c77bf44b0cc83c098c6c722b92a36ac4b5/cmake/deps.txt",
+      "bundlePath": null
+    },
+    {
+      "bytes": 37777,
+      "sha256": "0904a52b7156440d20f080eaea0b09261d99c81d1d9504c4bdd1e4c6f76ab1c1",
+      "gitBlob": "f523fefdd153ad2d4567c062baa105fbd8db3ec9",
+      "origin": "ort",
+      "revision": "8f0278c77bf44b0cc83c098c6c722b92a36ac4b5",
+      "sourcePath": "cmake/external/onnxruntime_external_deps.cmake",
+      "url": "https://github.com/intel/onnxruntime/blob/8f0278c77bf44b0cc83c098c6c722b92a36ac4b5/cmake/external/onnxruntime_external_deps.cmake",
+      "bundlePath": null
+    }
+  ],
+  "configuration": {
+    "bundlePath": "build-plan/required-operators.config",
+    "origin": "research output from fixed 8f0278c generator audit; included verbatim, not an upstream repository file",
+    "repositoryRevision": null,
+    "repositoryUrl": null,
+    "generatorAuditResultSha256": "8dda6ab95ad683dfc7666a7acd83df321445a61195308767b94c780e3871f171",
+    "bytes": 4958,
+    "sha256": "1601aecf861212c77c9a92395369f4b89035b75b3824e657b3e45ab00bfcc826",
+    "gitBlob": "d6e0243482b73d4ef7a57b5d2b2af14740e17768"
+  },
+  "notices": {
+    "product": "https://github.com/ccch1mneyyy/dsh-go/blob/567390d1f943777ac8f8e9c3abbbbe346821e5d1/THIRD_PARTY_NOTICES.md",
+    "ort": "https://github.com/intel/onnxruntime/blob/8f0278c77bf44b0cc83c098c6c722b92a36ac4b5/ThirdPartyNotices.txt",
+    "headerComments": "Original notices in both Kotlin files and both C headers preserved byte for byte."
+  }
+}

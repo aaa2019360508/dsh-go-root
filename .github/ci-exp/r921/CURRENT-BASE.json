@@ -1,0 +1,58 @@
+{
+  "checkedUtc": "2026-11-23 09:23:14 UTC",
+  "researchProductCommit": "567390d1f943777ac8f8e9c3abbbbe346821e5d1",
+  "currentMain": "a707bbe2ae7cabc564683c949ed12f58c0c174ff",
+  "currentTree": "9255a9c024ee19d0bfeda6e75735708ecd8f6829",
+  "mergeDate": "2026-11-23T09:13:00Z",
+  "mergeMessage": "Merge pull request #1858 from ccch1mneyyy/perf/p2runtime-batch2",
+  "comparisonUrl": "https://api.github.com/repos/ccch1mneyyy/dsh-Go/compare/567390d1f943777ac8f8e9c3abbbbe346821e5d1...a707bbe2ae7cabc564683c949ed12f58c0c174ff",
+  "aheadBy": 6,
+  "changedFiles": [
+    {
+      "path": "docs/maintenance/cordis-effect-setup-retention-contract.md",
+      "gitBlob": "5982536e20292fa5151ed9f48387ca622c1d259c",
+      "status": "added"
+    },
+    {
+      "path": "docs/maintenance/cordis-reflect-empty-notify-contract.md",
+      "gitBlob": "fd00e3354c2a65f41979aadb632976ae5300b953",
+      "status": "added"
+    },
+    {
+      "path": "runtime/bridge/dsh-go-bridge/lib/companion/task-schema.js",
+      "gitBlob": "d6201982ebc2a9cc013b1d6ebb76a1a55b17d794",
+      "status": "modified"
+    },
+    {
+      "path": "runtime/patches/cordis-effect-setup-retention.diff",
+      "gitBlob": "6ad3c35722e4af54cd647d42f4abbea0e70b3f7f",
+      "status": "added"
+    },
+    {
+      "path": "runtime/patches/cordis-reflect-empty-notify.diff",
+      "gitBlob": "5b02f71ee3230f76f32210b6ec5593c87584c64f",
+      "status": "added"
+    },
+    {
+      "path": "runtime/patches/pins.json",
+      "gitBlob": "4aa8b82a3fc4110574b90921453530076b3bcb71",
+      "status": "modified"
+    },
+    {
+      "path": "runtime/patches/series",
+      "gitBlob": "6e092be5617f0f2f997f9db571ae2ff931cac30a",
+      "status": "modified"
+    },
+    {
+      "path": "runtime/tests/companion-task-store-source.test.mjs",
+      "gitBlob": "5e4a66c1e4ef23aa1c262ab9d8ef4d612c6d2a21",
+      "status": "modified"
+    },
+    {
+      "path": "runtime/tests/cordis-effect-setup-retention.test.mjs",
+      "gitBlob": "c9cd20f53a7a040087384b88d21a974e51475a69",
+      "status": "added"
+    }
+  ],
+  "inference": "九条变更仅位于runtime与维护docs；app源码、模型输入锁及本研究实际编译的两份Kotlin源未变。既有实跑仍保留567身份，不宣称在新main重跑。"
+}

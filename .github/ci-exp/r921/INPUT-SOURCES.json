@@ -1,0 +1,119 @@
+{
+  "productCommit": "567390d1f943777ac8f8e9c3abbbbe346821e5d1",
+  "layout": "同一私有目录中的 11 个文件，model_quantized.onnx_data 与 model_quantized.onnx 相邻。默认仅校验。",
+  "inputs": [
+    {
+      "filename": "silero_vad.onnx",
+      "url": "https://raw.githubusercontent.com/snakers4/silero-vad/be95df9152c0d7618fa1edfeb296fc3dae32376f/src/silero_vad/data/silero_vad.onnx",
+      "bytes": 2327524,
+      "sha256": "1a153a22f4509e292a94e67d6f9b85e8deb25b4988682b7e174c65279d8788e3",
+      "source": "app/tool/fetch_speech_models.py:7–20",
+      "gitBlob": "80c5592ef1f4c9ede3e357bbd02eb863358a6a9d"
+    },
+    {
+      "filename": "smart-turn-v3.2-cpu.onnx",
+      "url": "https://huggingface.co/pipecat-ai/smart-turn-v3/resolve/f766f81d3cfdf7737ac64aad813d91bbfd56bf93/smart-turn-v3.2-cpu.onnx",
+      "bytes": 8679182,
+      "sha256": "2bb026316b14a660486a75b1733cd3fbab8c2fd0314dc9af7be49f8cca967e4f",
+      "source": "app/tool/fetch_speech_models.py:7–20",
+      "gitBlob": "0eb9495d39075ec04820bb037af47b166e620594"
+    },
+    {
+      "filename": "encoder-epoch-99-avg-1.int8.onnx",
+      "url": "https://huggingface.co/csukuangfj/sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20/resolve/98590b7ed6443e77b714204da2757d75e1a642f4/encoder-epoch-99-avg-1.int8.onnx",
+      "bytes": 181895032,
+      "sha256": "8fa764187a261844f859d7143ebaa563af5d10adfece4c18a8f414c88cba2a9b",
+      "source": "app/lib/voice/streaming_asr_download.dart:56–77"
+    },
+    {
+      "filename": "decoder-epoch-99-avg-1.int8.onnx",
+      "url": "https://huggingface.co/csukuangfj/sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20/resolve/98590b7ed6443e77b714204da2757d75e1a642f4/decoder-epoch-99-avg-1.int8.onnx",
+      "bytes": 13091040,
+      "sha256": "1a70c593d71e53f023f5f55b0b4cfff5055abb786ee3992e5f63dc2e273cc4fa",
+      "source": "app/lib/voice/streaming_asr_download.dart:56–77"
+    },
+    {
+      "filename": "joiner-epoch-99-avg-1.int8.onnx",
+      "url": "https://huggingface.co/csukuangfj/sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20/resolve/98590b7ed6443e77b714204da2757d75e1a642f4/joiner-epoch-99-avg-1.int8.onnx",
+      "bytes": 3228404,
+      "sha256": "1ed689c5ed19dbaa725d9d191bb4822b5f4855a39e1ffd28cbc1f340d25b2ee0",
+      "source": "app/lib/voice/streaming_asr_download.dart:56–77"
+    },
+    {
+      "filename": "tokens.txt",
+      "url": "https://huggingface.co/csukuangfj/sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20/resolve/98590b7ed6443e77b714204da2757d75e1a642f4/tokens.txt",
+      "bytes": 56317,
+      "sha256": "a8e0e4ec53810e433789b54a5c0134a7eaa2ffca595a6334d54c00da858841d3",
+      "source": "app/lib/voice/streaming_asr_download.dart:56–77"
+    },
+    {
+      "filename": "model_quantized.onnx",
+      "url": "https://huggingface.co/onnx-community/bge-small-zh-v1.5-ONNX/resolve/18e2da99700c49ed48c0a0e3683da39348fbbb36/onnx/model_quantized.onnx",
+      "bytes": 168002,
+      "sha256": "99a6e522710c00220c89f8c52e0cc5aa09d4cbb1c34c0e932eab3a9dfdc65df3",
+      "source": "app/lib/companion/companion_memory_model_download.dart:26–38,60–67"
+    },
+    {
+      "filename": "model_quantized.onnx_data",
+      "url": "https://huggingface.co/onnx-community/bge-small-zh-v1.5-ONNX/resolve/18e2da99700c49ed48c0a0e3683da39348fbbb36/onnx/model_quantized.onnx_data",
+      "bytes": 23774208,
+      "sha256": "952623481ca8beea884e3d3c9ecaf8a3c7bf1d0c21de29e970cd31af9d37a90b",
+      "source": "app/lib/companion/companion_memory_model_download.dart:26–38,60–67"
+    },
+    {
+      "filename": "tokenizer.json",
+      "url": "https://huggingface.co/onnx-community/bge-small-zh-v1.5-ONNX/resolve/18e2da99700c49ed48c0a0e3683da39348fbbb36/tokenizer.json",
+      "bytes": 362603,
+      "sha256": "3d09c84ebd10306706a79a8276b3ab736a40d8ec03251c7639f4e52c3a1a4f8e",
+      "source": "app/lib/companion/companion_memory_model_download.dart:78–99 and preprocess/source-identity.json:tokenizer",
+      "digestNote": "固定修订，此处 SHA-256 来自研究用固定原件。产品在首次下载时记录 tokenizer 摘要。"
+    },
+    {
+      "filename": "1.wav",
+      "url": "https://huggingface.co/csukuangfj/sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20/resolve/98590b7ed6443e77b714204da2757d75e1a642f4/test_wavs/1.wav",
+      "bytes": 163244,
+      "sha256": "8bfb42c963e623ebab31b81ff4404867d07d3102507c87ac14577c4c61663b8c",
+      "source": "zipformer-inputs.json",
+      "gitBlob": "22d84d23a4c3b7d4589aac0198e156becbda9f0e"
+    },
+    {
+      "filename": "kaldi_native_fbank-1.22.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+      "url": "https://files.pythonhosted.org/packages/84/90/01ef7331c52b1eaf9916f3f7a535155aac2e9e2ddad12a141613d92758c7/kaldi_native_fbank-1.22.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+      "bytes": 322002,
+      "sha256": "f16e74372fe9e20abb4183f98a8e2288d5ee4c48d04d94b6160311170e007661",
+      "source": "zipformer-inputs.json"
+    }
+  ],
+  "sourceFiles": [
+    {
+      "path": "app/tool/fetch_speech_models.py",
+      "bytes": 1704,
+      "sha256": "8c4835c0b4b5211cde403c1ceea3ed29514f209714678e7c3bf578957d4108d5",
+      "gitBlob": "a0b26c50fe6b7256f5449f0eed47b091637fa78a"
+    },
+    {
+      "path": "ASSETS.md",
+      "bytes": 4847,
+      "sha256": "449a53785b9991d6c7ab03a1848ece3bb2e1f28edbe75318fa3acb3893e03495",
+      "gitBlob": "61ae744452258c70fbf8432177620e45b3c04cdc"
+    },
+    {
+      "path": "app/lib/voice/streaming_asr_download.dart",
+      "bytes": 9676,
+      "sha256": "7decc8adc21c2320e83e37d9ac2f32551f85de8a20ed030ea10cdfbf9a786b67",
+      "gitBlob": "bd8482e1dbff3f08fec85cec2b0fbfd4a36ca804"
+    },
+    {
+      "path": "app/lib/companion/companion_memory_model_download.dart",
+      "bytes": 6439,
+      "sha256": "e01569f7f26e4eab2233721fa27b0c4dccaa46813616682e53f97f09d9e3cc22",
+      "gitBlob": "fb28b2d9d1afb2be5d05406f987525844da30a3d"
+    }
+  ],
+  "externalToolchain": {
+    "scope": "11 件以外。Kotlin 与 org.json 使用已安装固定 JAR，不在此脚本下载。JDK 21、Kotlin 2.4.0 编译类、org.json:json:20240303 的 SHA/字节和编译命令见同包既有说明。",
+    "identities": "preprocess/source-identity.json",
+    "instructions": "preprocess/README.md",
+    "javaClasspath": "K2JVMCompiler 及其依赖目录 ktjars，与独立 json_jar 明确传入；请勿把模型目录用于编译器类路径。"
+  }
+}

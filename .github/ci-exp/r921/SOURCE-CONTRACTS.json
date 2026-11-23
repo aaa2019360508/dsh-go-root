@@ -1,0 +1,137 @@
+{
+  "scope": "输入、连续状态和贪心决策设计的固定源码合同。研究脚本执行原图，不运行完整Sherpa。",
+  "previousTextEvidence": {
+    "name": "neural-frame-evidence.zip",
+    "url": "https://drive.google.com/file/d/17x9uYuvnKa_OJuaF9AlYx9MRJdxgUPRZ/view",
+    "bytes": 249894,
+    "sha256": "e941e4836ac728af6d92bd09f5e3cdf83fec36368811d6dd954720d4b14fe72c"
+  },
+  "files": [
+    {
+      "repository": "ccch1mneyyy/dsh-Go",
+      "revision": "567390d1f943777ac8f8e9c3abbbbe346821e5d1",
+      "path": "app/android/app/src/main/kotlin/io/github/ccch1mneyyy/dsh_app/nativemedia/NeuralGate.kt",
+      "url": "https://github.com/ccch1mneyyy/dsh-Go/blob/567390d1f943777ac8f8e9c3abbbbe346821e5d1/app/android/app/src/main/kotlin/io/github/ccch1mneyyy/dsh_app/nativemedia/NeuralGate.kt",
+      "bytes": 7370,
+      "gitBlob": "5582e685c43dce5561061f28e61b5e2c8749d62a",
+      "sha256": "95167547b6efa978de290e212b958bb190252a41568f9bb53cd1e49e795179c1"
+    },
+    {
+      "repository": "ccch1mneyyy/dsh-Go",
+      "revision": "567390d1f943777ac8f8e9c3abbbbe346821e5d1",
+      "path": "app/android/app/src/main/kotlin/io/github/ccch1mneyyy/dsh_app/nativemedia/OrtSpeechModels.kt",
+      "url": "https://github.com/ccch1mneyyy/dsh-Go/blob/567390d1f943777ac8f8e9c3abbbbe346821e5d1/app/android/app/src/main/kotlin/io/github/ccch1mneyyy/dsh_app/nativemedia/OrtSpeechModels.kt",
+      "bytes": 3329,
+      "gitBlob": "12a74ac0fbd97fdac8cbf7a23b7f917e74e69494",
+      "sha256": "de076d7438b4100e997ba85de7e6382178014a07eaaa644fb7e0efa76bc3aa03"
+    },
+    {
+      "repository": "ccch1mneyyy/dsh-Go",
+      "revision": "567390d1f943777ac8f8e9c3abbbbe346821e5d1",
+      "path": "app/android/app/src/main/kotlin/io/github/ccch1mneyyy/dsh_app/speech/CallCapture.kt",
+      "url": "https://github.com/ccch1mneyyy/dsh-Go/blob/567390d1f943777ac8f8e9c3abbbbe346821e5d1/app/android/app/src/main/kotlin/io/github/ccch1mneyyy/dsh_app/speech/CallCapture.kt",
+      "bytes": 10133,
+      "gitBlob": "87e663112bf51212ea8b2d784bde5fb7fb1a6fcc",
+      "sha256": "fcb858176f875a7c58de9ef66ace736a951a7cacff881390470bcfb5ac55e03f"
+    },
+    {
+      "repository": "ccch1mneyyy/dsh-Go",
+      "revision": "567390d1f943777ac8f8e9c3abbbbe346821e5d1",
+      "path": "app/android/app/src/main/kotlin/io/github/ccch1mneyyy/dsh_app/companion/CompanionEmbeddingPlugin.kt",
+      "url": "https://github.com/ccch1mneyyy/dsh-Go/blob/567390d1f943777ac8f8e9c3abbbbe346821e5d1/app/android/app/src/main/kotlin/io/github/ccch1mneyyy/dsh_app/companion/CompanionEmbeddingPlugin.kt",
+      "bytes": 11418,
+      "gitBlob": "f99f22d02496c8adb8c2b9643968126417e94d34",
+      "sha256": "d93716b06204192e3056db5b9ad84a6654a11e2b78768db3a55eeeba696d1c90"
+    },
+    {
+      "repository": "ccch1mneyyy/dsh-Go",
+      "revision": "567390d1f943777ac8f8e9c3abbbbe346821e5d1",
+      "path": "app/lib/voice/streaming_asr.dart",
+      "url": "https://github.com/ccch1mneyyy/dsh-Go/blob/567390d1f943777ac8f8e9c3abbbbe346821e5d1/app/lib/voice/streaming_asr.dart",
+      "bytes": 10569,
+      "gitBlob": "b224f0132393092b36d956f2bcfeb4189dfa103f",
+      "sha256": "d96e8636f52d9dbf661713d6c29d642b989054bd13a378c7e1d903993cd9192e"
+    },
+    {
+      "repository": "k2-fsa/sherpa-onnx",
+      "revision": "142807252687d81b40d6315f23470a1512a00de3",
+      "path": "sherpa-onnx/csrc/features.h",
+      "url": "https://github.com/k2-fsa/sherpa-onnx/blob/142807252687d81b40d6315f23470a1512a00de3/sherpa-onnx/csrc/features.h",
+      "bytes": 4507,
+      "gitBlob": "af7fbb8a36a4fe67ab5c29cae98b49cf1db4c2a9",
+      "sha256": "98d7cced1049d2dcaca085d8b309e7296d8b6f811db8c8f0762907d4fd31d66e"
+    },
+    {
+      "repository": "k2-fsa/sherpa-onnx",
+      "revision": "142807252687d81b40d6315f23470a1512a00de3",
+      "path": "sherpa-onnx/csrc/features.cc",
+      "url": "https://github.com/k2-fsa/sherpa-onnx/blob/142807252687d81b40d6315f23470a1512a00de3/sherpa-onnx/csrc/features.cc",
+      "bytes": 12128,
+      "gitBlob": "9942e923a0d396ed28f2754538c2efef6066f948",
+      "sha256": "1d2f19982d5e9c410a7101027a0251ef63ca7d50413d91edab029d546c9cf2e8"
+    },
+    {
+      "repository": "k2-fsa/sherpa-onnx",
+      "revision": "142807252687d81b40d6315f23470a1512a00de3",
+      "path": "sherpa-onnx/csrc/online-zipformer-transducer-model.cc",
+      "url": "https://github.com/k2-fsa/sherpa-onnx/blob/142807252687d81b40d6315f23470a1512a00de3/sherpa-onnx/csrc/online-zipformer-transducer-model.cc",
+      "bytes": 17130,
+      "gitBlob": "84e46951aa6dbd0e732bf31494a4db31fc9bbba6",
+      "sha256": "ff660d5295b785b97c26e3cf6450a1f0d6c03a600c0623056c4a0e8c3c96b241"
+    },
+    {
+      "repository": "k2-fsa/sherpa-onnx",
+      "revision": "142807252687d81b40d6315f23470a1512a00de3",
+      "path": "sherpa-onnx/csrc/online-recognizer-transducer-impl.h",
+      "url": "https://github.com/k2-fsa/sherpa-onnx/blob/142807252687d81b40d6315f23470a1512a00de3/sherpa-onnx/csrc/online-recognizer-transducer-impl.h",
+      "bytes": 18780,
+      "gitBlob": "7e438a993cacf6dcc5d317d468d46dc3d2184a49",
+      "sha256": "ff5d3bad5767d24da394dbb7b130517fb8641e05debbcef8fb8e595ba670d115"
+    },
+    {
+      "repository": "k2-fsa/sherpa-onnx",
+      "revision": "142807252687d81b40d6315f23470a1512a00de3",
+      "path": "sherpa-onnx/csrc/online-stream.cc",
+      "url": "https://github.com/k2-fsa/sherpa-onnx/blob/142807252687d81b40d6315f23470a1512a00de3/sherpa-onnx/csrc/online-stream.cc",
+      "bytes": 11045,
+      "gitBlob": "1e003807e36f927e057093f182e96167cf2554d6",
+      "sha256": "772d384ec7252c02d20f106680a670d5d26fd86cdc2cf88d23995603ed8e4750"
+    },
+    {
+      "repository": "k2-fsa/sherpa-onnx",
+      "revision": "142807252687d81b40d6315f23470a1512a00de3",
+      "path": "sherpa-onnx/csrc/online-transducer-greedy-search-decoder.cc",
+      "url": "https://github.com/k2-fsa/sherpa-onnx/blob/142807252687d81b40d6315f23470a1512a00de3/sherpa-onnx/csrc/online-transducer-greedy-search-decoder.cc",
+      "bytes": 5878,
+      "gitBlob": "27965a8b6f9cbb3b6afd2b81223db145f66d948b",
+      "sha256": "7ff18438db5b944d94f6b1a84368cda7a93496fdd0a0c7948690b1db11055ac2"
+    },
+    {
+      "repository": "k2-fsa/sherpa-onnx",
+      "revision": "142807252687d81b40d6315f23470a1512a00de3",
+      "path": "sherpa-onnx/csrc/endpoint.cc",
+      "url": "https://github.com/k2-fsa/sherpa-onnx/blob/142807252687d81b40d6315f23470a1512a00de3/sherpa-onnx/csrc/endpoint.cc",
+      "bytes": 3473,
+      "gitBlob": "afe76fdb7778ac7526967511a856022df3cd49a6",
+      "sha256": "ea3858509c1188f52dc97210716ee60b3f770144acf8ea7ee9baf87008a1aa74"
+    },
+    {
+      "repository": "k2-fsa/sherpa-onnx",
+      "revision": "142807252687d81b40d6315f23470a1512a00de3",
+      "path": "sherpa-onnx/csrc/endpoint.h",
+      "url": "https://github.com/k2-fsa/sherpa-onnx/blob/142807252687d81b40d6315f23470a1512a00de3/sherpa-onnx/csrc/endpoint.h",
+      "bytes": 2291,
+      "gitBlob": "aea5d7d22b2959affe19ebb15f789c95bc8afdc5",
+      "sha256": "4fd9b7e3d239f4c239ca27cc189dcbb2c667df34ace51c19fb612485b48c6572"
+    },
+    {
+      "repository": "k2-fsa/sherpa-onnx",
+      "revision": "142807252687d81b40d6315f23470a1512a00de3",
+      "path": "cmake/kaldi-native-fbank.cmake",
+      "url": "https://github.com/k2-fsa/sherpa-onnx/blob/142807252687d81b40d6315f23470a1512a00de3/cmake/kaldi-native-fbank.cmake",
+      "bytes": 3017,
+      "gitBlob": "bd21e9505d47523c8c6d98c0b2b563f4716e3426",
+      "sha256": "619f0046f568e85790f4180899e666053f246f5c0fc36c951421441f3e992e38"
+    }
+  ]
+}

@@ -1,0 +1,191 @@
+{
+  "sampleRate": 16000,
+  "mel": [
+    {
+      "case": "silence-short",
+      "sourceSha256": "0c92bddb4e96f3ea9ec9f0f64a668255a6c15527ac09f6f119cafde60c7c4a39",
+      "endSampleExclusive": 16000,
+      "keptSamples": 16000,
+      "leftPadded": 112000,
+      "shape": [
+        1,
+        80,
+        800
+      ],
+      "bytes": 256000,
+      "sha256": "c4a1d90bbbdc1c49cf89b8f73360019b1b0fe01ae48a9dfd6fc2c4a3228b8859",
+      "minimum": -1.5,
+      "maximum": -1.5
+    },
+    {
+      "case": "synthetic-short",
+      "sourceSha256": "d2f812565393b5d99e4d9d9ab20e7e9bce20510926172056a3639fd8127940ab",
+      "endSampleExclusive": 16000,
+      "keptSamples": 16000,
+      "leftPadded": 112000,
+      "shape": [
+        1,
+        80,
+        800
+      ],
+      "bytes": 256000,
+      "sha256": "d8cab244189a29c36684ecd0dd2de458ce22e33a457a9cce204738800f00221d",
+      "minimum": -0.065543532371521,
+      "maximum": 1.934456467628479
+    },
+    {
+      "case": "synthetic-full",
+      "sourceSha256": "d2f812565393b5d99e4d9d9ab20e7e9bce20510926172056a3639fd8127940ab",
+      "endSampleExclusive": 128000,
+      "keptSamples": 128000,
+      "leftPadded": 0,
+      "shape": [
+        1,
+        80,
+        800
+      ],
+      "bytes": 256000,
+      "sha256": "cb22d521eb800158fc3bd00fc92887a519e07d0def43863d5762d14227fc7ebe",
+      "minimum": -0.2916320562362671,
+      "maximum": 1.708367943763733
+    },
+    {
+      "case": "synthetic-wrap",
+      "sourceSha256": "d2f812565393b5d99e4d9d9ab20e7e9bce20510926172056a3639fd8127940ab",
+      "endSampleExclusive": 144000,
+      "keptSamples": 128000,
+      "leftPadded": 0,
+      "shape": [
+        1,
+        80,
+        800
+      ],
+      "bytes": 256000,
+      "sha256": "81047233fbf80e8e90134516c6d2ed889bf598474bde77819ba475434c9638bb",
+      "minimum": -0.2917419672012329,
+      "maximum": 1.708258032798767
+    }
+  ],
+  "bge": [
+    {
+      "case": "empty-doc",
+      "mode": "document",
+      "text": "",
+      "textSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "shape": [
+        1,
+        2
+      ],
+      "tensors": {
+        "input_ids": {
+          "bytes": 16,
+          "sha256": "09847d28e646eb1f1b1ea87a78cb7b40523eacb34297796030919d4a8193466c"
+        },
+        "attention_mask": {
+          "bytes": 16,
+          "sha256": "814dd7b9784d57c15b9c2972e9b4fd6cf7e164f8162a934bdb2452a413dab1f7"
+        },
+        "token_type_ids": {
+          "bytes": 16,
+          "sha256": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb"
+        }
+      }
+    },
+    {
+      "case": "same-doc",
+      "mode": "document",
+      "text": "今天在公园见面。",
+      "textSha256": "2d93807936374588eab4873e9f992b048f1b453e295d463d3bc20f0fe3e63219",
+      "shape": [
+        1,
+        10
+      ],
+      "tensors": {
+        "input_ids": {
+          "bytes": 80,
+          "sha256": "a147998ccb4548535f06a46412c6efe24bf6b5edabb337cb58566a799a1b38a3"
+        },
+        "attention_mask": {
+          "bytes": 80,
+          "sha256": "2a852b73e5f58e0a800b0beba12978687e46397cfa4f71e3d90a6f8cb13d99a0"
+        },
+        "token_type_ids": {
+          "bytes": 80,
+          "sha256": "5b6fb58e61fa475939767d68a446f97f1bff02c0e5935a3ea8bb51e6515783d8"
+        }
+      }
+    },
+    {
+      "case": "same-query",
+      "mode": "query",
+      "text": "今天在公园见面。",
+      "textSha256": "2d93807936374588eab4873e9f992b048f1b453e295d463d3bc20f0fe3e63219",
+      "shape": [
+        1,
+        29
+      ],
+      "tensors": {
+        "input_ids": {
+          "bytes": 232,
+          "sha256": "01794f27f90d80c5b465068b71ff805f97b416896483f408b22b9d0785597696"
+        },
+        "attention_mask": {
+          "bytes": 232,
+          "sha256": "dbc98745bb89574fe808968d7aafdc064cc3716ca2659f29141f428aa5be64c5"
+        },
+        "token_type_ids": {
+          "bytes": 232,
+          "sha256": "c4fcd50d9f0c893c46288b57d8e62b18523145956b249b6ecd6c21718be49065"
+        }
+      }
+    },
+    {
+      "case": "mixed-doc",
+      "mode": "document",
+      "text": "中文 A9, Hello! 🧩 [MASK][UNK] [SEP] [CLS] [PAD]",
+      "textSha256": "b3a4853ccbfdae5cd0273d7d757923e2d987530bf9399d90800d4a17b6dd716b",
+      "shape": [
+        1,
+        14
+      ],
+      "tensors": {
+        "input_ids": {
+          "bytes": 112,
+          "sha256": "f6e036ee0dab3a0f42e26f07eedd6f1f46497b3dcca37cabbe9f263db327bf80"
+        },
+        "attention_mask": {
+          "bytes": 112,
+          "sha256": "f53447c40b0e5a50d8f3ffeae755f8f455b0eb8b734530fa5102152ce347bf9f"
+        },
+        "token_type_ids": {
+          "bytes": 112,
+          "sha256": "b5fdab78d8947eacc864bfeecb4d2100780e5afe1cd8efafb124887913ac49fa"
+        }
+      }
+    },
+    {
+      "case": "long-doc",
+      "mode": "document",
+      "text": "repeat U+4E2D 512 times",
+      "textSha256": "7c83a4f7037759383f04d634b259f34d302455c2daceae3ec157e54d5e1f5c43",
+      "shape": [
+        1,
+        512
+      ],
+      "tensors": {
+        "input_ids": {
+          "bytes": 4096,
+          "sha256": "aa2665c86e324c117c513fe7fbb6c062aacfc62db05bbff8055160c036ab1b52"
+        },
+        "attention_mask": {
+          "bytes": 4096,
+          "sha256": "8a472efbc41a4502e6da085422880bc742625c1187f2d36ed39e669d736ac113"
+        },
+        "token_type_ids": {
+          "bytes": 4096,
+          "sha256": "ad7facb2586fc6e966c004d7d1d16b024f5805ff7cb47c7a85dabd8b48892ca7"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,679 @@
+{
+  "scope": "host C API runs; complete baseline only",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "machine": "x86_64",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "numpy": "2.3.5",
+  "libraries": {
+    "left": {
+      "sha256": "b5c9d4f124d24707f514dad926dc181820807178855df1c528e3addb2dd0e6f7",
+      "bytes": 23658512
+    }
+  },
+  "modelIdentity": {
+    "model_quantized.onnx": {
+      "bytes": 168002,
+      "sha256": "99a6e522710c00220c89f8c52e0cc5aa09d4cbb1c34c0e932eab3a9dfdc65df3"
+    },
+    "model_quantized.onnx_data": {
+      "bytes": 23774208,
+      "sha256": "952623481ca8beea884e3d3c9ecaf8a3c7bf1d0c21de29e970cd31af9d37a90b"
+    },
+    "smart-turn-v3.2-cpu.onnx": {
+      "bytes": 8679182,
+      "sha256": "2bb026316b14a660486a75b1733cd3fbab8c2fd0314dc9af7be49f8cca967e4f"
+    }
+  },
+  "threads": {
+    "intra": 1,
+    "inter": 1
+  },
+  "execution": "sequential",
+  "optimization": "ORT_ENABLE_ALL",
+  "ORT_LOAD_CONFIG_FROM_MODEL": "0",
+  "cases": [
+    {
+      "model": "bge",
+      "case": "empty-doc",
+      "inputs": {
+        "input_ids": {
+          "shape": [
+            1,
+            2
+          ],
+          "dtype": "<i8",
+          "bytes": 16,
+          "sha256": "09847d28e646eb1f1b1ea87a78cb7b40523eacb34297796030919d4a8193466c",
+          "finite": 2,
+          "elements": 2,
+          "min": 101.0,
+          "max": 102.0
+        },
+        "attention_mask": {
+          "shape": [
+            1,
+            2
+          ],
+          "dtype": "<i8",
+          "bytes": 16,
+          "sha256": "814dd7b9784d57c15b9c2972e9b4fd6cf7e164f8162a934bdb2452a413dab1f7",
+          "finite": 2,
+          "elements": 2,
+          "min": 1.0,
+          "max": 1.0
+        },
+        "token_type_ids": {
+          "shape": [
+            1,
+            2
+          ],
+          "dtype": "<i8",
+          "bytes": 16,
+          "sha256": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+          "finite": 2,
+          "elements": 2,
+          "min": 0.0,
+          "max": 0.0
+        }
+      },
+      "outputs": {
+        "left": {
+          "last_hidden_state": {
+            "shape": [
+              1,
+              2,
+              512
+            ],
+            "dtype": "<f4",
+            "bytes": 4096,
+            "sha256": "50f7c33b49fca151880adb04a28f908d233adb56c8299e7bef24cc70051f8da7",
+            "finite": 1024,
+            "elements": 1024,
+            "min": -4.82492733001709,
+            "max": 2.417930841445923
+          },
+          "sentence_embedding": {
+            "shape": [
+              1,
+              512
+            ],
+            "dtype": "<f4",
+            "bytes": 2048,
+            "sha256": "8ae21ba3800e05fc902e9533d009a13bf67d80eb600e8cacfc9947d0afd8a236",
+            "finite": 512,
+            "elements": 512,
+            "min": -0.3302372992038727,
+            "max": 0.31569787859916687
+          }
+        }
+      },
+      "normalizedCls": {
+        "left": {
+          "shape": [
+            512
+          ],
+          "dtype": "<f8",
+          "bytes": 4096,
+          "sha256": "f38daddf0a7738098862a08041fa66dfaff5b694548db9ccd4a354bd7c186572",
+          "finite": 512,
+          "elements": 512,
+          "min": -0.3302372937674001,
+          "max": 0.31569787110569536
+        }
+      }
+    },
+    {
+      "model": "bge",
+      "case": "same-doc",
+      "inputs": {
+        "input_ids": {
+          "shape": [
+            1,
+            10
+          ],
+          "dtype": "<i8",
+          "bytes": 80,
+          "sha256": "a147998ccb4548535f06a46412c6efe24bf6b5edabb337cb58566a799a1b38a3",
+          "finite": 10,
+          "elements": 10,
+          "min": 101.0,
+          "max": 7481.0
+        },
+        "attention_mask": {
+          "shape": [
+            1,
+            10
+          ],
+          "dtype": "<i8",
+          "bytes": 80,
+          "sha256": "2a852b73e5f58e0a800b0beba12978687e46397cfa4f71e3d90a6f8cb13d99a0",
+          "finite": 10,
+          "elements": 10,
+          "min": 1.0,
+          "max": 1.0
+        },
+        "token_type_ids": {
+          "shape": [
+            1,
+            10
+          ],
+          "dtype": "<i8",
+          "bytes": 80,
+          "sha256": "5b6fb58e61fa475939767d68a446f97f1bff02c0e5935a3ea8bb51e6515783d8",
+          "finite": 10,
+          "elements": 10,
+          "min": 0.0,
+          "max": 0.0
+        }
+      },
+      "outputs": {
+        "left": {
+          "last_hidden_state": {
+            "shape": [
+              1,
+              10,
+              512
+            ],
+            "dtype": "<f4",
+            "bytes": 20480,
+            "sha256": "cd9d7f24fa5016edec320e70cc2372caff2f5eccf4b5d977c916f84970a6cef7",
+            "finite": 5120,
+            "elements": 5120,
+            "min": -4.001080513000488,
+            "max": 1.8548039197921753
+          },
+          "sentence_embedding": {
+            "shape": [
+              1,
+              512
+            ],
+            "dtype": "<f4",
+            "bytes": 2048,
+            "sha256": "da2868a975065db9ff8e36c02b14f6c5702dddf6e8e75af8c12f59729bc55c25",
+            "finite": 512,
+            "elements": 512,
+            "min": -0.24925653636455536,
+            "max": 0.20692987740039825
+          }
+        }
+      },
+      "normalizedCls": {
+        "left": {
+          "shape": [
+            512
+          ],
+          "dtype": "<f8",
+          "bytes": 4096,
+          "sha256": "4e1a7fe1b05c33af7e3ed4920b971ee6db65dfa27d76a4fcc0aab5da742e1156",
+          "finite": 512,
+          "elements": 512,
+          "min": -0.24925654312289236,
+          "max": 0.20692988136185833
+        }
+      }
+    },
+    {
+      "model": "bge",
+      "case": "same-query",
+      "inputs": {
+        "input_ids": {
+          "shape": [
+            1,
+            29
+          ],
+          "dtype": "<i8",
+          "bytes": 232,
+          "sha256": "01794f27f90d80c5b465068b71ff805f97b416896483f408b22b9d0785597696",
+          "finite": 29,
+          "elements": 29,
+          "min": 101.0,
+          "max": 8038.0
+        },
+        "attention_mask": {
+          "shape": [
+            1,
+            29
+          ],
+          "dtype": "<i8",
+          "bytes": 232,
+          "sha256": "dbc98745bb89574fe808968d7aafdc064cc3716ca2659f29141f428aa5be64c5",
+          "finite": 29,
+          "elements": 29,
+          "min": 1.0,
+          "max": 1.0
+        },
+        "token_type_ids": {
+          "shape": [
+            1,
+            29
+          ],
+          "dtype": "<i8",
+          "bytes": 232,
+          "sha256": "c4fcd50d9f0c893c46288b57d8e62b18523145956b249b6ecd6c21718be49065",
+          "finite": 29,
+          "elements": 29,
+          "min": 0.0,
+          "max": 0.0
+        }
+      },
+      "outputs": {
+        "left": {
+          "last_hidden_state": {
+            "shape": [
+              1,
+              29,
+              512
+            ],
+            "dtype": "<f4",
+            "bytes": 59392,
+            "sha256": "6442e838cdbba4857c0d31f22d632aaf66e8c7f613df32b34a7f5c8684a9e07f",
+            "finite": 14848,
+            "elements": 14848,
+            "min": -4.731060028076172,
+            "max": 2.209237813949585
+          },
+          "sentence_embedding": {
+            "shape": [
+              1,
+              512
+            ],
+            "dtype": "<f4",
+            "bytes": 2048,
+            "sha256": "4b339c7d78cfddaa0cd9b93b65ecb2f8058dc447e1d1dfac39b4004d4fea36fa",
+            "finite": 512,
+            "elements": 512,
+            "min": -0.17566819489002228,
+            "max": 0.21208608150482178
+          }
+        }
+      },
+      "normalizedCls": {
+        "left": {
+          "shape": [
+            512
+          ],
+          "dtype": "<f8",
+          "bytes": 4096,
+          "sha256": "4beb2b6e9441df21aaf57c6938fae1d93eb8da88ab74b05e005bf60610d87610",
+          "finite": 512,
+          "elements": 512,
+          "min": -0.17566819944112938,
+          "max": 0.2120860846205512
+        }
+      }
+    },
+    {
+      "model": "bge",
+      "case": "mixed-doc",
+      "inputs": {
+        "input_ids": {
+          "shape": [
+            1,
+            14
+          ],
+          "dtype": "<i8",
+          "bytes": 112,
+          "sha256": "f6e036ee0dab3a0f42e26f07eedd6f1f46497b3dcca37cabbe9f263db327bf80",
+          "finite": 14,
+          "elements": 14,
+          "min": 0.0,
+          "max": 3152.0
+        },
+        "attention_mask": {
+          "shape": [
+            1,
+            14
+          ],
+          "dtype": "<i8",
+          "bytes": 112,
+          "sha256": "f53447c40b0e5a50d8f3ffeae755f8f455b0eb8b734530fa5102152ce347bf9f",
+          "finite": 14,
+          "elements": 14,
+          "min": 1.0,
+          "max": 1.0
+        },
+        "token_type_ids": {
+          "shape": [
+            1,
+            14
+          ],
+          "dtype": "<i8",
+          "bytes": 112,
+          "sha256": "b5fdab78d8947eacc864bfeecb4d2100780e5afe1cd8efafb124887913ac49fa",
+          "finite": 14,
+          "elements": 14,
+          "min": 0.0,
+          "max": 0.0
+        }
+      },
+      "outputs": {
+        "left": {
+          "last_hidden_state": {
+            "shape": [
+              1,
+              14,
+              512
+            ],
+            "dtype": "<f4",
+            "bytes": 28672,
+            "sha256": "b85b70dc1f3c5d9daf3f0ffd6cbd5b950379357977247ef6925e6eefbc2d384c",
+            "finite": 7168,
+            "elements": 7168,
+            "min": -5.632938861846924,
+            "max": 2.391233444213867
+          },
+          "sentence_embedding": {
+            "shape": [
+              1,
+              512
+            ],
+            "dtype": "<f4",
+            "bytes": 2048,
+            "sha256": "33a7ecb2e91c944959c4670e44dc69844a2a6219a00f40f9be1a74e1876cd22d",
+            "finite": 512,
+            "elements": 512,
+            "min": -0.3414284884929657,
+            "max": 0.28505122661590576
+          }
+        }
+      },
+      "normalizedCls": {
+        "left": {
+          "shape": [
+            512
+          ],
+          "dtype": "<f8",
+          "bytes": 4096,
+          "sha256": "8d0ac0684d50b97f649f7501f2d4edfb61387058179538268dc8741a5d251a8b",
+          "finite": 512,
+          "elements": 512,
+          "min": -0.3414284711578009,
+          "max": 0.2850512183045409
+        }
+      }
+    },
+    {
+      "model": "bge",
+      "case": "long-doc",
+      "inputs": {
+        "input_ids": {
+          "shape": [
+            1,
+            512
+          ],
+          "dtype": "<i8",
+          "bytes": 4096,
+          "sha256": "aa2665c86e324c117c513fe7fbb6c062aacfc62db05bbff8055160c036ab1b52",
+          "finite": 512,
+          "elements": 512,
+          "min": 101.0,
+          "max": 704.0
+        },
+        "attention_mask": {
+          "shape": [
+            1,
+            512
+          ],
+          "dtype": "<i8",
+          "bytes": 4096,
+          "sha256": "8a472efbc41a4502e6da085422880bc742625c1187f2d36ed39e669d736ac113",
+          "finite": 512,
+          "elements": 512,
+          "min": 1.0,
+          "max": 1.0
+        },
+        "token_type_ids": {
+          "shape": [
+            1,
+            512
+          ],
+          "dtype": "<i8",
+          "bytes": 4096,
+          "sha256": "ad7facb2586fc6e966c004d7d1d16b024f5805ff7cb47c7a85dabd8b48892ca7",
+          "finite": 512,
+          "elements": 512,
+          "min": 0.0,
+          "max": 0.0
+        }
+      },
+      "outputs": {
+        "left": {
+          "last_hidden_state": {
+            "shape": [
+              1,
+              512,
+              512
+            ],
+            "dtype": "<f4",
+            "bytes": 1048576,
+            "sha256": "fe5ed36e585c928055ec67707595f8f7690492c6e0e2c08785a40bed2a0ced78",
+            "finite": 262144,
+            "elements": 262144,
+            "min": -4.839557647705078,
+            "max": 1.6078784465789795
+          },
+          "sentence_embedding": {
+            "shape": [
+              1,
+              512
+            ],
+            "dtype": "<f4",
+            "bytes": 2048,
+            "sha256": "7ed09137b559d226a564c3100b03144be7b055fafd506cfd257c7ad36a633dd3",
+            "finite": 512,
+            "elements": 512,
+            "min": -0.3664092421531677,
+            "max": 0.12233263999223709
+          }
+        }
+      },
+      "normalizedCls": {
+        "left": {
+          "shape": [
+            512
+          ],
+          "dtype": "<f8",
+          "bytes": 4096,
+          "sha256": "f9a6f562579270a4e3febea5836bcfdbc7208cc6039101d614a4481be1eff068",
+          "finite": 512,
+          "elements": 512,
+          "min": -0.3664092565375896,
+          "max": 0.12233264380215492
+        }
+      }
+    },
+    {
+      "model": "smartTurn",
+      "case": "silence-short",
+      "inputs": {
+        "input_features": {
+          "shape": [
+            1,
+            80,
+            800
+          ],
+          "dtype": "<f4",
+          "bytes": 256000,
+          "sha256": "c4a1d90bbbdc1c49cf89b8f73360019b1b0fe01ae48a9dfd6fc2c4a3228b8859",
+          "finite": 64000,
+          "elements": 64000,
+          "min": -1.5,
+          "max": -1.5
+        }
+      },
+      "outputs": {
+        "left": {
+          "logits": {
+            "shape": [
+              1,
+              1
+            ],
+            "dtype": "<f4",
+            "bytes": 4,
+            "sha256": "30e4312e937fe10f5b10a3925433df4d8eb2f32bee1df31df724b98f53623d44",
+            "finite": 1,
+            "elements": 1,
+            "min": 0.9870367050170898,
+            "max": 0.9870367050170898
+          }
+        }
+      },
+      "probability": {
+        "left": 0.9870367050170898
+      },
+      "atLeastHalf": {
+        "left": true
+      }
+    },
+    {
+      "model": "smartTurn",
+      "case": "synthetic-short",
+      "inputs": {
+        "input_features": {
+          "shape": [
+            1,
+            80,
+            800
+          ],
+          "dtype": "<f4",
+          "bytes": 256000,
+          "sha256": "d8cab244189a29c36684ecd0dd2de458ce22e33a457a9cce204738800f00221d",
+          "finite": 64000,
+          "elements": 64000,
+          "min": -0.065543532371521,
+          "max": 1.934456467628479
+        }
+      },
+      "outputs": {
+        "left": {
+          "logits": {
+            "shape": [
+              1,
+              1
+            ],
+            "dtype": "<f4",
+            "bytes": 4,
+            "sha256": "d0849f342c853313e41dddfa54f073b0570c92825167d0129e19ebed52405d12",
+            "finite": 1,
+            "elements": 1,
+            "min": 0.9823201894760132,
+            "max": 0.9823201894760132
+          }
+        }
+      },
+      "probability": {
+        "left": 0.9823201894760132
+      },
+      "atLeastHalf": {
+        "left": true
+      }
+    },
+    {
+      "model": "smartTurn",
+      "case": "synthetic-full",
+      "inputs": {
+        "input_features": {
+          "shape": [
+            1,
+            80,
+            800
+          ],
+          "dtype": "<f4",
+          "bytes": 256000,
+          "sha256": "cb22d521eb800158fc3bd00fc92887a519e07d0def43863d5762d14227fc7ebe",
+          "finite": 64000,
+          "elements": 64000,
+          "min": -0.2916320562362671,
+          "max": 1.708367943763733
+        }
+      },
+      "outputs": {
+        "left": {
+          "logits": {
+            "shape": [
+              1,
+              1
+            ],
+            "dtype": "<f4",
+            "bytes": 4,
+            "sha256": "960625da2d99249cfdc84a7d5158da7daebeb01e5f172d641fcde74b23467b1f",
+            "finite": 1,
+            "elements": 1,
+            "min": 0.9777120351791382,
+            "max": 0.9777120351791382
+          }
+        }
+      },
+      "probability": {
+        "left": 0.9777120351791382
+      },
+      "atLeastHalf": {
+        "left": true
+      }
+    },
+    {
+      "model": "smartTurn",
+      "case": "synthetic-wrap",
+      "inputs": {
+        "input_features": {
+          "shape": [
+            1,
+            80,
+            800
+          ],
+          "dtype": "<f4",
+          "bytes": 256000,
+          "sha256": "81047233fbf80e8e90134516c6d2ed889bf598474bde77819ba475434c9638bb",
+          "finite": 64000,
+          "elements": 64000,
+          "min": -0.2917419672012329,
+          "max": 1.708258032798767
+        }
+      },
+      "outputs": {
+        "left": {
+          "logits": {
+            "shape": [
+              1,
+              1
+            ],
+            "dtype": "<f4",
+            "bytes": 4,
+            "sha256": "156549feb234350644dd6e5564b31e5a5253232d63bbdd35dee95a0f5ac7b58e",
+            "finite": 1,
+            "elements": 1,
+            "min": 0.9793655872344971,
+            "max": 0.9793655872344971
+          }
+        }
+      },
+      "probability": {
+        "left": 0.9793655872344971
+      },
+      "atLeastHalf": {
+        "left": true
+      }
+    }
+  ],
+  "bgeSimilarity": {
+    "left": {
+      "scores": {
+        "empty-doc": 0.24794361369866746,
+        "same-doc": 0.8144987853191012,
+        "mixed-doc": 0.2627432374739456,
+        "long-doc": 0.1748961828179109
+      },
+      "descending": [
+        "same-doc",
+        "mixed-doc",
+        "empty-doc",
+        "long-doc"
+      ]
+    }
+  },
+  "sourceIdentity": {
+    "prepared_probe.py": "2118ad032e1b41ce982c60d055f00b906e53a67bf4a127d723447593b6503ebf",
+    "ort_client.py": "1d9c0c2c9b65fe45a6742a3db4b3a8736022972f8dbcba8e2b3ea677ffcc43bf",
+    "ort_runner.cc": "561be163398f62b5ddf46eff422376b4a9b9b4523047b855b9b3b729016fc797"
+  }
+}

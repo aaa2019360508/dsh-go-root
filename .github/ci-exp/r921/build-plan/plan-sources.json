@@ -1,0 +1,61 @@
+{
+  "ortCommit": "8f0278c77bf44b0cc83c098c6c722b92a36ac4b5",
+  "ortRootTree": "5ea4a49d0be5e5a620cabaa01f85d924b2fa5995",
+  "sources": {
+    "tools/ci_build/build_args.py": {
+      "gitBlob": "e0ee8dddbac1bde4cb106b941d38e0d0225b7359",
+      "sha256": "1380bc1c065eadfff7191b6dd6dcb8b1cacd00204be28cdb5745ac3dc7ba3f02",
+      "bytes": 46563
+    },
+    "tools/ci_build/build.py": {
+      "gitBlob": "310bf67928f466ffc13c82f20af4e8492bc82323",
+      "sha256": "86e310a44adc100801cbd7d6514d519e79a8bee63f937581f4344dd7a4f4f448",
+      "bytes": 118396
+    },
+    "tools/ci_build/reduce_op_kernels.py": {
+      "gitBlob": "c917c544a557ca049aef0fda72056749d222d0a9",
+      "sha256": "31b1496e38d8ea42532a3647f70b27ffbf0a0da153d7ba010e6a85c5404c690d",
+      "bytes": 14384
+    },
+    "cmake/CMakeLists.txt": {
+      "gitBlob": "f1126c2dce79ec906883b61b2c4dc5990bd00224",
+      "sha256": "d1436e0e9480f5f4ccc3d1e3850b9f68812a056c572f8bab9d5fd80a033cced9",
+      "bytes": 87138
+    },
+    "cmake/onnxruntime.cmake": {
+      "gitBlob": "146e37f8ecda871ca71b72d82c396d63c16db266",
+      "sha256": "4f73825c1782b0309cbad11d04c1a8ae5d7460b2464e08905064dcb11fdcd9c6",
+      "bytes": 22812
+    },
+    "cmake/deps.txt": {
+      "gitBlob": "5a835e0c6fe9f3587061bc27d672ffed6afdc76f",
+      "sha256": "e411468ead299e3386b2e5e9d773e50e1939b5fc0baca599666ca5757eeb3f71",
+      "bytes": 7137
+    },
+    "cmake/external/onnxruntime_external_deps.cmake": {
+      "gitBlob": "f523fefdd153ad2d4567c062baa105fbd8db3ec9",
+      "sha256": "0904a52b7156440d20f080eaea0b09261d99c81d1d9504c4bdd1e4c6f76ab1c1",
+      "bytes": 37777
+    }
+  },
+  "config": {
+    "bytes": 4958,
+    "sha256": "1601aecf861212c77c9a92395369f4b89035b75b3824e657b3e45ab00bfcc826"
+  },
+  "localValidation": "bash -n; plan mode fed both argument vectors to the original upstream parse_arguments, no CMake configuration or build",
+  "registrationSourceCheck": {
+    "previousResultSha256": "8dda6ab95ad683dfc7666a7acd83df321445a61195308767b94c780e3871f171",
+    "configSha256": "1601aecf861212c77c9a92395369f4b89035b75b3824e657b3e45ab00bfcc826",
+    "arguments": [
+      "--cmake_build_dir",
+      "<new scratch directory>",
+      "--is_extended_minimal_build_or_higher",
+      "experimental-cpu.config"
+    ],
+    "generatedFiles": 4,
+    "generatedManifestSha256": "79d3d4f2d60e912e3e78000b34e5f3beaa2ac5ecb02eec6acc34451703f64175",
+    "comparedToPreviousOutputSha256List": "exact match",
+    "cmakeConfigured": false,
+    "compiled": false
+  }
+}

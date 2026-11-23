@@ -1,0 +1,84 @@
+{
+  "scope": "raw 3-graph CPU C API runs, fixed fbank and greedy token decisions; no Sherpa UI/text rendering or Android execution",
+  "host": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "numpy": "2.3.5",
+  "capi": {
+    "baseline": {
+      "encoder": [
+        "ready",
+        "1.27.0",
+        "36"
+      ],
+      "decoder": [
+        "ready",
+        "1.27.0",
+        "1"
+      ],
+      "joiner": [
+        "ready",
+        "1.27.0",
+        "1"
+      ]
+    }
+  },
+  "intraAndInterThreadsRequested": [
+    2,
+    2
+  ],
+  "runnerSha256": "f0ff97f7636c2c3203ee7315ecdf966cda35395f24098ee554daf97539e33563",
+  "libraries": {
+    "baseline": "b5c9d4f124d24707f514dad926dc181820807178855df1c528e3addb2dd0e6f7"
+  },
+  "modelSha256": {
+    "encoder": "8fa764187a261844f859d7143ebaa563af5d10adfece4c18a8f414c88cba2a9b",
+    "decoder": "1a70c593d71e53f023f5f55b0b4cfff5055abb786ee3992e5f63dc2e273cc4fa",
+    "joiner": "1ed689c5ed19dbaa725d9d191bb4822b5f4855a39e1ffd28cbc1f340d25b2ee0"
+  },
+  "audioSha256": "8bfb42c963e623ebab31b81ff4404867d07d3102507c87ac14577c4c61663b8c",
+  "wheelSha256": "f16e74372fe9e20abb4183f98a8e2288d5ee4c48d04d94b6160311170e007661",
+  "tokensSha256": "a8e0e4ec53810e433789b54a5c0134a7eaa2ffca595a6334d54c00da858841d3",
+  "fbankPcmFrames": 640,
+  "inputPattern": "same 255 PCM frames, 130 silence, same 255 PCM frames",
+  "windowBytesSha256": "2183fe147458b3845b34cd528a7a18af0061ba0c67c84dded7e359149f925e2f",
+  "blocksBeforeFinish": 39,
+  "blocksAfterFinish": 1,
+  "finalReadyFbankFrames": 1310,
+  "sides": {
+    "baseline": {
+      "runs": {
+        "encoderRuns": 40,
+        "decoderRuns": 40,
+        "joinerRuns": 320,
+        "blank": 282,
+        "blocksUsingPriorDecoderOut": 38,
+        "emitted": 38
+      },
+      "argmaxSequenceSha256": "f08696e3e6c6214fa5c2416dc5e38a9b64a64484d1b48f902780080d94f6e243",
+      "outputTraceSha256": {
+        "encoder": "c923cf08daf05e21314dc6fb88bbc4b1f59f3746050dd4d1185728ac3846c5e1",
+        "decoder": "cdc08d9e45b264a69953959b50f6143a7eceb128c2a6df2ff0bb62f0477688a6",
+        "joiner": "b4fb25127bc40f7249e25d79f0447bb316045cea39695633b305202526e94490"
+      },
+      "minimumJoinerTop2Margin": 0.058086395263671875,
+      "endpoints": [
+        {
+          "afterPcmFrame": 325,
+          "inputPhase": "interveningSilence",
+          "rule": 2,
+          "processedFeatureFrames": 640,
+          "trailingBlanks": 32,
+          "segmentTokenCount": 18,
+          "segmentTokenSha256": "3aa2cf209cdaf0eb3c359f944ee91d7be381e29caea4f7b9739332921872bd25",
+          "restartContext": [
+            851,
+            592
+          ]
+        }
+      ],
+      "tokenCountAtFinalStop": 20,
+      "finalStopTokenSha256": "4541efeab8d1975187382918752358fd5b27a3f683e073f3ebb562174cff88b2"
+    }
+  },
+  "pair": null
+}

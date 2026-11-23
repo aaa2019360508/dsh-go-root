@@ -1,0 +1,103 @@
+{
+  "commit": "567390d1f943777ac8f8e9c3abbbbe346821e5d1",
+  "product": {
+    "app/android/app/src/main/kotlin/io/github/ccch1mneyyy/dsh_app/nativemedia/WhisperMel.kt": {
+      "bytes": 6011,
+      "gitBlob": "46d6f2d19c41809d3de435478b5b41bc1ebab469",
+      "sha256": "5a9df8016701921db02cf315b15ec73ab367a29de4bd679c4395f7b5ea9447b8",
+      "compiled": true
+    },
+    "app/android/app/src/main/kotlin/io/github/ccch1mneyyy/dsh_app/companion/CompanionWordPiece.kt": {
+      "bytes": 6004,
+      "gitBlob": "1fbbfe005248b009493c20beba70ded195280a16",
+      "sha256": "358059c58da1019b63c8a585eb3fda748e3774b5c166959225cd6dbb3ed16997",
+      "compiled": true
+    },
+    "app/android/app/src/main/kotlin/io/github/ccch1mneyyy/dsh_app/nativemedia/NeuralGate.kt": {
+      "bytes": 7370,
+      "gitBlob": "5582e685c43dce5561061f28e61b5e2c8749d62a",
+      "sha256": "95167547b6efa978de290e212b958bb190252a41568f9bb53cd1e49e795179c1",
+      "compiled": false
+    },
+    "app/android/app/src/main/kotlin/io/github/ccch1mneyyy/dsh_app/companion/CompanionEmbeddingPlugin.kt": {
+      "bytes": 11418,
+      "gitBlob": "f99f22d02496c8adb8c2b9643968126417e94d34",
+      "sha256": "d93716b06204192e3056db5b9ad84a6654a11e2b78768db3a55eeeba696d1c90",
+      "compiled": false
+    }
+  },
+  "toolchain": {
+    "java": "openjdk version \"21.0.13\" 2026-10-20\nOpenJDK Runtime Environment (build 21.0.13+9-1-deb13u2-Debian)\nOpenJDK 64-Bit Server VM (build 21.0.13+9-1-deb13u2-Debian, mixed mode, sharing)",
+    "compilerClasspath": {
+      "annotations-13.0.jar": {
+        "bytes": 17536,
+        "sha256": "ace2a10dc8e2d5fd34925ecac03e4988b2c0f851650c94b8cef49ba1bd111478"
+      },
+      "hamcrest-core-1.3.jar": {
+        "bytes": 45024,
+        "sha256": "66fdef91e9739348df7a096aa384a5685f4e875584cce89386a7a47251c4d8e9"
+      },
+      "junit-4.13.2.jar": {
+        "bytes": 384581,
+        "sha256": "8e495b634469d64fb8acfa3495a065cbacc8a0fff55ce1e31007be4c16dc57d3"
+      },
+      "kotlin-build-tools-api-2.4.0.jar": {
+        "bytes": 310931,
+        "sha256": "66917335497f9ab75a36c34b3d90bad2bc8dc256c34b2413ecd0c9467fcf597d"
+      },
+      "kotlin-compiler-embeddable-2.4.0.jar": {
+        "bytes": 60351320,
+        "sha256": "c2b25e8c1c93ec416ba4327f5e31eaec0f0c8847241b9353e294b8db9dce564f"
+      },
+      "kotlin-daemon-embeddable-2.4.0.jar": {
+        "bytes": 381838,
+        "sha256": "383093af5e078435b60043d19bfa83eb6191be0f4d13a28fb1c8a0f3ab24fe66"
+      },
+      "kotlin-reflect-1.6.10.jar": {
+        "bytes": 3038560,
+        "sha256": "3277ac102ae17aad10a55abec75ff5696c8d109790396434b496e75087854203"
+      },
+      "kotlin-script-runtime-2.4.0.jar": {
+        "bytes": 46564,
+        "sha256": "196e8ecbf63daf477e34e67c2f871ee232ae7bf8b377432d876d1bbf9d273de3"
+      },
+      "kotlin-stdlib-2.4.0.jar": {
+        "bytes": 1841929,
+        "sha256": "ccb14ff83fabcb11458b798dbc9824748ccdffeec79c9aba789e6ed1cda86b1c"
+      },
+      "kotlinx-coroutines-core-jvm-1.8.0.jar": {
+        "bytes": 1548360,
+        "sha256": "9860906a1937490bf5f3b06d2f0e10ef451e65b95b269f22daf68a3d1f5065c5"
+      },
+      "xz-1.10.jar": {
+        "bytes": 168569,
+        "sha256": "95c63c1a55b22dd6453890a419cc1a640f790bbf7d8ae82db1e30aefefb08888"
+      }
+    },
+    "jsonJar": {
+      "json-20240303.jar": {
+        "bytes": 78332,
+        "sha256": "3cf6cd6892e32e2b4c1c39e0f52f5248a2f5b37646fdfbb79a66b46b618414ed"
+      }
+    }
+  },
+  "tokenizer": {
+    "bytes": 362603,
+    "sha256": "3d09c84ebd10306706a79a8276b3ab736a40d8ec03251c7639f4e52c3a1a4f8e",
+    "vocabEntries": 21128
+  },
+  "files": {
+    "PrepareInputs.kt": {
+      "bytes": 3212,
+      "sha256": "fcdd6dd95df56dc5636cb1c1412baade362f604e2a2dd71ffcc168f63c497c63"
+    },
+    "fixture_cases.py": {
+      "bytes": 3971,
+      "sha256": "91fa25bce44d3e46361cc7b836a9eec7360a243a975396ec1040fdf63915fdce"
+    },
+    "fixture-summary.json": {
+      "bytes": 5460,
+      "sha256": "53028291ea5e0fbb806ab205c4ce5eda0007988056297c381ab1ac6420cdc84e"
+    }
+  }
+}

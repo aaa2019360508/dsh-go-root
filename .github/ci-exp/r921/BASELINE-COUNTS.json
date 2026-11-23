@@ -1,0 +1,332 @@
+{
+  "scope": "Linux x86_64 PyPI ORT 1.27.0 固定发行库，单侧实际运行。后续同配方自编双库的 baseline 与此发行库构建身份不同，体积或数值差不能仅由裁减选项归因。",
+  "reports": {
+    "prepared-baseline/result.json": "161c707bba3fdad5bd8179aea1e5895413315ea80a89c07e95a4dbd03e0badce",
+    "speech-baseline/result.json": "0aeaacd8e79c0a32d49f8f00ccef008676a034d3e31e09a2a2744646a1781c11",
+    "zipformer-baseline/result.json": "98bb9cbccf501ee01005244fdc0c9fc730a6853137702a704bf22d017f6007c5",
+    "transport-validation/result.json": "10e695941d328c3d55e9cb27e12d981e122133539d79cd6fbacbeb2c00d650d7"
+  },
+  "publishedLibrary": {
+    "sha256": "b5c9d4f124d24707f514dad926dc181820807178855df1c528e3addb2dd0e6f7",
+    "bytes": 23658512
+  },
+  "publishedLibrarySource": "prepared-baseline/result.json $.libraries.left；transport-validation/result.json $.ortBuildInfo / $.ortPythonVersion",
+  "primarySessionTotal": {
+    "count": 7,
+    "basis": "prepared_probe.py: 两个 GROUPS 各建一次；speech_probe.py: Silero、SmartTurn 两个独立 ExitStack；zipformer $.capi.baseline 三次 ready。前四个Session数由实际执行的脚本控制流推导。"
+  },
+  "primaryCapiRuns": {
+    "count": 1207,
+    "basis": "prepared $.cases 长度9；speech $.silero.warmup一例、$.silero.scenarios[*].runCount 合计793、$.smartTurn四例；zipformer $.sides.baseline.runs 三图合计400。另列传输校验。"
+  },
+  "prepared": {
+    "source": "prepared-baseline/result.json $.cases[*].{case,model,inputs,outputs.left,normalizedCls.left}；$.bgeSimilarity.left",
+    "inputExamples": {
+      "bge": [
+        "empty-doc",
+        "same-doc",
+        "same-query",
+        "mixed-doc",
+        "long-doc"
+      ],
+      "smartTurn": [
+        "silence-short",
+        "synthetic-short",
+        "synthetic-full",
+        "synthetic-wrap"
+      ]
+    },
+    "rawOutputs": {
+      "bge": {
+        "last_hidden_state": {
+          "shapes": [
+            [
+              1,
+              2,
+              512
+            ],
+            [
+              1,
+              10,
+              512
+            ],
+            [
+              1,
+              14,
+              512
+            ],
+            [
+              1,
+              29,
+              512
+            ],
+            [
+              1,
+              512,
+              512
+            ]
+          ],
+          "finite": 290304,
+          "elements": 290304
+        },
+        "sentence_embedding": {
+          "shapes": [
+            [
+              1,
+              512
+            ]
+          ],
+          "finite": 2560,
+          "elements": 2560
+        }
+      },
+      "smartTurn": {
+        "logits": {
+          "shapes": [
+            [
+              1,
+              1
+            ]
+          ],
+          "finite": 4,
+          "elements": 4
+        }
+      }
+    },
+    "bgeSimilarity": {
+      "scores": {
+        "empty-doc": 0.24794361369866746,
+        "same-doc": 0.8144987853191012,
+        "mixed-doc": 0.2627432374739456,
+        "long-doc": 0.1748961828179109
+      },
+      "descending": [
+        "same-doc",
+        "mixed-doc",
+        "empty-doc",
+        "long-doc"
+      ]
+    },
+    "bgeT": [
+      2,
+      10,
+      29,
+      14,
+      512
+    ],
+    "bgeNormalizedCls": {
+      "normalizedCls": {
+        "shapes": [
+          [
+            512
+          ]
+        ],
+        "finite": 2560,
+        "elements": 2560
+      }
+    }
+  },
+  "speech": {
+    "source": "speech-baseline/result.json $.silero.warmup.left；$.silero.scenarios[*].{name,frames,mutedFrames,framesWithoutRun,resetOnEachMutedFrame,runCount,residualNewSamples,runs[*].outputs.left}；$.smartTurn[*].{case,outputs.left,probability.left}",
+    "sileroWarmup": {
+      "output": {
+        "shapes": [
+          [
+            1,
+            1
+          ]
+        ],
+        "finite": 1,
+        "elements": 1
+      },
+      "stateN": {
+        "shapes": [
+          [
+            2,
+            1,
+            128
+          ]
+        ],
+        "finite": 256,
+        "elements": 256
+      }
+    },
+    "sileroScenarios": {
+      "unmuted": {
+        "frames": 640,
+        "mutedFrames": 0,
+        "framesWithoutRun": 240,
+        "resetOnEachMutedFrame": true,
+        "runCount": 400,
+        "residualNewSamples": 0,
+        "rawOutputs": {
+          "output": {
+            "shapes": [
+              [
+                1,
+                1
+              ]
+            ],
+            "finite": 400,
+            "elements": 400
+          },
+          "stateN": {
+            "shapes": [
+              [
+                2,
+                1,
+                128
+              ]
+            ],
+            "finite": 102400,
+            "elements": 102400
+          }
+        }
+      },
+      "mute-frames-100-to-109": {
+        "frames": 640,
+        "mutedFrames": 10,
+        "framesWithoutRun": 237,
+        "resetOnEachMutedFrame": true,
+        "runCount": 393,
+        "residualNewSamples": 128,
+        "rawOutputs": {
+          "output": {
+            "shapes": [
+              [
+                1,
+                1
+              ]
+            ],
+            "finite": 393,
+            "elements": 393
+          },
+          "stateN": {
+            "shapes": [
+              [
+                2,
+                1,
+                128
+              ]
+            ],
+            "finite": 100608,
+            "elements": 100608
+          }
+        }
+      }
+    },
+    "smartTurnProbabilities": {
+      "spoken-1s": 0.9485659599304199,
+      "spoken-5p1s": 0.9647200703620911,
+      "joined-full-8s": 0.9848582744598389,
+      "joined-wrap-9s": 0.23476183414459229
+    },
+    "smartTurnOutputs": {
+      "logits": {
+        "shapes": [
+          [
+            1,
+            1
+          ]
+        ],
+        "finite": 4,
+        "elements": 4
+      }
+    },
+    "resetBoundary": "两段各独立从零态开始；在第二段0起PCM帧100..109（含）每帧执行一次夹具reset，不计入Run。语义来自留存speech_probe.py，次数与JSON的mutedFrames吻合。"
+  },
+  "zipformer": {
+    "source": "zipformer-baseline/result.json $.{inputPattern,fbankPcmFrames,blocksBeforeFinish,blocksAfterFinish,capi.baseline,sides.baseline.{runs,endpoints,minimumJoinerTop2Margin,tokenCountAtFinalStop}}",
+    "inputPatterns": 1,
+    "pcmFrames": 640,
+    "beforeAndAfterFinish": [
+      39,
+      1
+    ],
+    "ready": {
+      "encoder": [
+        "ready",
+        "1.27.0",
+        "36"
+      ],
+      "decoder": [
+        "ready",
+        "1.27.0",
+        "1"
+      ],
+      "joiner": [
+        "ready",
+        "1.27.0",
+        "1"
+      ]
+    },
+    "runs": {
+      "encoderRuns": 40,
+      "decoderRuns": 40,
+      "joinerRuns": 320,
+      "blank": 282,
+      "blocksUsingPriorDecoderOut": 38,
+      "emitted": 38
+    },
+    "endpoints": [
+      {
+        "afterPcmFrame": 325,
+        "inputPhase": "interveningSilence",
+        "rule": 2,
+        "processedFeatureFrames": 640,
+        "trailingBlanks": 32,
+        "segmentTokenCount": 18,
+        "segmentTokenSha256": "3aa2cf209cdaf0eb3c359f944ee91d7be381e29caea4f7b9739332921872bd25",
+        "restartContext": [
+          851,
+          592
+        ]
+      }
+    ],
+    "lastSegmentCumulativeEmissions": 20,
+    "minimumJoinerTop2Margin": 0.058086395263671875,
+    "shapesAndFinite": "逐Run形状没有独立JSON字段；留存zipformer_probe.py中DecoderSide.call逐输出检查isfinite。block验证encoder_out为[1,F,512]及35个new_cached与各自初态形状相同；decoder_out[1,512]，logit[1,6254]。"
+  },
+  "transport": {
+    "source": "transport-validation/result.json $.{cApiReady,ortBuildInfo,allBitwiseEqual,outputs.{output,stateN}}；validate_transport.py 每个后端调用一次Run/一次Session",
+    "inputExamples": 1,
+    "backendRunsByCode": {
+      "CAPI": 1,
+      "PythonBinding": 1
+    },
+    "backendSessionsByCode": {
+      "CAPI": 1,
+      "PythonBinding": 1
+    },
+    "cApiReady": [
+      "ready",
+      "1.27.0",
+      "2"
+    ],
+    "ortBuildInfo": "ORT Build Info: git-branch=HEAD, git-commit-id=8f0278c77b, fp8-kv-cache=1, build type=Release",
+    "allBitwiseEqual": true,
+    "outputSummary": {
+      "output": {
+        "shapes": [
+          [
+            1,
+            1
+          ]
+        ],
+        "finite": 1,
+        "elements": 1
+      },
+      "stateN": {
+        "shapes": [
+          [
+            2,
+            1,
+            128
+          ]
+        ],
+        "finite": 256,
+        "elements": 256
+      }
+    }
+  }
+}

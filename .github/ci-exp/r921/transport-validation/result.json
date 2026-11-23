@@ -1,0 +1,125 @@
+{
+  "purpose": "transport validation only; one real product Silero zero warm-up",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "machine": "x86_64",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "numpy": "2.3.5",
+  "ortPythonVersion": "1.27.0",
+  "ortBuildInfo": "ORT Build Info: git-branch=HEAD, git-commit-id=8f0278c77b, fp8-kv-cache=1, build type=Release",
+  "cApiReady": [
+    "ready",
+    "1.27.0",
+    "2"
+  ],
+  "modelSha256": "1a153a22f4509e292a94e67d6f9b85e8deb25b4988682b7e174c65279d8788e3",
+  "librarySha256": "b5c9d4f124d24707f514dad926dc181820807178855df1c528e3addb2dd0e6f7",
+  "runnerSourceSha256": "cb11778f4db88bae7b9e297f31a36f9afd60bd060bba0fc1ac20a476a9bbc5de",
+  "inputs": {
+    "input": {
+      "shape": [
+        1,
+        576
+      ],
+      "dtype": "<f4",
+      "bytes": 2304,
+      "sha256": "cfc335996cfae29fdf14fd2db7ea853366d350a5d387aa3c322616e81dacd56b",
+      "finite": 576,
+      "elements": 576,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "state": {
+      "shape": [
+        2,
+        1,
+        128
+      ],
+      "dtype": "<f4",
+      "bytes": 1024,
+      "sha256": "5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+      "finite": 256,
+      "elements": 256,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "sr": {
+      "shape": [],
+      "dtype": "<i8",
+      "bytes": 8,
+      "sha256": "738bef8fedbaa70e13b8f2ea3e762d9a05fb349ac6bb81bb0501c0a6383d87e9",
+      "finite": 1,
+      "elements": 1,
+      "min": 16000.0,
+      "max": 16000.0
+    }
+  },
+  "outputs": {
+    "output": {
+      "sameShapeType": true,
+      "left": {
+        "shape": [
+          1,
+          1
+        ],
+        "dtype": "<f4",
+        "bytes": 4,
+        "sha256": "02d813674986707482a6ffcaf64aff393b30546ddf3080fa40aebf78e8ec2631",
+        "finite": 1,
+        "elements": 1,
+        "min": 0.0016697943210601807,
+        "max": 0.0016697943210601807
+      },
+      "right": {
+        "shape": [
+          1,
+          1
+        ],
+        "dtype": "<f4",
+        "bytes": 4,
+        "sha256": "02d813674986707482a6ffcaf64aff393b30546ddf3080fa40aebf78e8ec2631",
+        "finite": 1,
+        "elements": 1,
+        "min": 0.0016697943210601807,
+        "max": 0.0016697943210601807
+      },
+      "bitwiseEqual": true,
+      "equalElements": 1,
+      "maxAbsFinite": 0.0
+    },
+    "stateN": {
+      "sameShapeType": true,
+      "left": {
+        "shape": [
+          2,
+          1,
+          128
+        ],
+        "dtype": "<f4",
+        "bytes": 1024,
+        "sha256": "2f574b63dad623dd2df842a2a98bb8fc0bd5647b24aa829b3029279f56f77f74",
+        "finite": 256,
+        "elements": 256,
+        "min": -0.8188130259513855,
+        "max": 0.8568682074546814
+      },
+      "right": {
+        "shape": [
+          2,
+          1,
+          128
+        ],
+        "dtype": "<f4",
+        "bytes": 1024,
+        "sha256": "2f574b63dad623dd2df842a2a98bb8fc0bd5647b24aa829b3029279f56f77f74",
+        "finite": 256,
+        "elements": 256,
+        "min": -0.8188130259513855,
+        "max": 0.8568682074546814
+      },
+      "bitwiseEqual": true,
+      "equalElements": 256,
+      "maxAbsFinite": 0.0
+    }
+  },
+  "allBitwiseEqual": true
+}

@@ -1,0 +1,105 @@
+{
+  "wavSha256": "8bfb42c963e623ebab31b81ff4404867d07d3102507c87ac14577c4c61663b8c",
+  "format": "mono PCM16LE",
+  "rateHz": 16000,
+  "original": {
+    "samples": 81600,
+    "sha256": "35d512d4a5d5a3a705f53361d4edffc0e0f49edb54a42a5ba6fe591e42019e2a"
+  },
+  "joined": {
+    "samples": 204800,
+    "sha256": "80e0dd4c6527408ff5877220632d844ee00c32ec7ce5e0fb9244895f780513d7",
+    "segments": [
+      {
+        "source": "original",
+        "samples": 81600
+      },
+      {
+        "source": "inserted-zero",
+        "samples": 41600
+      },
+      {
+        "source": "original",
+        "samples": 81600
+      }
+    ]
+  },
+  "cases": [
+    {
+      "case": "spoken-1s",
+      "source": "original",
+      "endSampleExclusive": 16000,
+      "firstSourceSample": 0,
+      "sourceSamplesKept": 16000,
+      "leftPaddingSamples": 112000,
+      "input": "input_features",
+      "shape": [
+        1,
+        80,
+        800
+      ],
+      "dtype": "float32le",
+      "bytes": 256000,
+      "sha256": "1be818c38455a9a9a5324024d744f370ba410395528edc68bdaf3ad15ec2bd82",
+      "minimum": 0.08974695205688477,
+      "maximum": 2.0897469520568848
+    },
+    {
+      "case": "spoken-5p1s",
+      "source": "original",
+      "endSampleExclusive": 81600,
+      "firstSourceSample": 0,
+      "sourceSamplesKept": 81600,
+      "leftPaddingSamples": 46400,
+      "input": "input_features",
+      "shape": [
+        1,
+        80,
+        800
+      ],
+      "dtype": "float32le",
+      "bytes": 256000,
+      "sha256": "5f44c828809749cf4f9601439184d04426ffe77ea8b0c33b6c99e9ff101e52a9",
+      "minimum": 0.032095909118652344,
+      "maximum": 2.0320959091186523
+    },
+    {
+      "case": "joined-full-8s",
+      "source": "joined",
+      "endSampleExclusive": 128000,
+      "firstSourceSample": 0,
+      "sourceSamplesKept": 128000,
+      "leftPaddingSamples": 0,
+      "input": "input_features",
+      "shape": [
+        1,
+        80,
+        800
+      ],
+      "dtype": "float32le",
+      "bytes": 256000,
+      "sha256": "1cd939e003e2f77d185c95b0022b986817c18957a1654a047f0a92483cd9f25b",
+      "minimum": 0.03205668926239014,
+      "maximum": 2.0320568084716797
+    },
+    {
+      "case": "joined-wrap-9s",
+      "source": "joined",
+      "endSampleExclusive": 144000,
+      "firstSourceSample": 16000,
+      "sourceSamplesKept": 128000,
+      "leftPaddingSamples": 0,
+      "input": "input_features",
+      "shape": [
+        1,
+        80,
+        800
+      ],
+      "dtype": "float32le",
+      "bytes": 256000,
+      "sha256": "b8329b6301717452c8a561af475a1e58f081e86acfb1547f33336256faf6aff3",
+      "minimum": 0.02413320541381836,
+      "maximum": 2.0241332054138184
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "onnxruntime_ep_c_api.h": {
+    "bytes": 149810,
+    "sha256": "f65ac849718cabe3ff4902698dd2de643c3b3dbe0010242b2b0407548e7ee00c",
+    "gitBlob": "6824b85ba300114ee1fd2db64098b17f5f65b80b",
+    "treeEntry": "6824b85ba300114ee1fd2db64098b17f5f65b80b"
+  },
+  "onnxruntime_c_api.h": {
+    "bytes": 392016,
+    "sha256": "c4ed26d7bbc7b649c1c38622424d88dfb1a28e3d3594c5f1456cf458814e8381",
+    "gitBlob": "793cdd505aaa3f362e2d29dbae2e8b00e31742f8",
+    "treeEntry": "793cdd505aaa3f362e2d29dbae2e8b00e31742f8"
+  }
+}
