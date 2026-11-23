@@ -149,7 +149,7 @@ class RootBridge(
             }
             served.incrementAndGet()
             when (val op = request["op"] as? String) {
-                "exec" -> exec(output, request)
+                "exec" -> handleExec(output, request)
                 "read" -> end(output, shell.read(str(request["path"]) ?: "", int(request["maxBytes"]) ?: RootShell.DEFAULT_MAX_BYTES))
                 "write" -> end(output, shell.write(str(request["path"]) ?: "", str(request["base64"]) ?: "", request["append"] == true))
                 "list" -> end(output, shell.list(str(request["path"]) ?: "/"))
@@ -166,7 +166,7 @@ class RootBridge(
         }
     }
 
-    private fun exec(output: OutputStream, request: Map<*, *>) {
+    private fun handleExec(output: OutputStream, request: Map<*, *>) {
         val command = str(request["cmd"])?.trim().orEmpty()
         if (command.isEmpty()) {
             reply(output, mapOf("end" to true, "ok" to false, "error" to "empty_command"))
@@ -193,7 +193,7 @@ class RootBridge(
         val timeout = (int(request["timeoutMs"]) ?: RootShell.DEFAULT_TIMEOUT_MS.toInt())
             .coerceIn(1_000, MAX_TIMEOUT_MS.toInt()).toLong()
         val maxBytes = (int(request["maxBytes"]) ?: RootShell.DEFAULT_MAX_BYTES).coerceIn(4_096, RootShell.DEFAULT_MAX_BYTES)
-        val result = shell.exec(command, timeout, maxBytes)
+        val result = shell.runCommand(command, timeout, maxBytes)
         RootPolicy.record(
             RootPolicy.Entry(
                 System.currentTimeMillis(), command, result.exit, result.error,

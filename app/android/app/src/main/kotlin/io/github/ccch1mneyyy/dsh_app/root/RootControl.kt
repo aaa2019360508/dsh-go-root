@@ -135,12 +135,12 @@ class RootControl private constructor(private val app: Context) {
     }
 
     /** A command typed by the person on the page: no confirmation, but the scope still applies. */
-    fun exec(command: String, timeoutMs: Long = RootShell.DEFAULT_TIMEOUT_MS): Map<String, Any?> {
+    fun runCommand(command: String, timeoutMs: Long = RootShell.DEFAULT_TIMEOUT_MS): Map<String, Any?> {
         if (command.isBlank()) return mapOf("exit" to -1, "output" to "", "error" to "empty_command")
         if (!policy.writeAccess && !RootPolicy.isReadOnly(command)) {
             return mapOf("exit" to -1, "output" to "", "error" to "read_only_scope")
         }
-        val result = shell.exec(command, timeoutMs)
+        val result = shell.runCommand(command, timeoutMs)
         publish()
         return result.toMap()
     }

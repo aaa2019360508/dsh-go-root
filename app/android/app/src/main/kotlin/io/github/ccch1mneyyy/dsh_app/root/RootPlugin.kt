@@ -70,7 +70,7 @@ class RootPlugin : FlutterPlugin, MethodChannel.MethodCallHandler, EventChannel.
             "exec" -> {
                 val command = call.argument<String>("command") ?: ""
                 val timeout = (call.argument<Number>("timeoutMs")?.toLong() ?: RootShell.DEFAULT_TIMEOUT_MS)
-                worker.execute { reply(result) { control.exec(command, timeout) } }
+                worker.execute { reply(result) { control.runCommand(command, timeout) } }
             }
             "approve" -> {
                 val id = call.argument<String>("id")
