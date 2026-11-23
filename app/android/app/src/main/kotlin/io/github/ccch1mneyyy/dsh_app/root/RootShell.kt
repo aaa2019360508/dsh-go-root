@@ -65,7 +65,7 @@ class RootShell(private val log: (String) -> Unit = {}) {
         if (su == null) {
             return Status(false, "none", "", -1, "", "su_missing")
         }
-        val id = exec("id", timeoutMs = timeoutMs)
+        val id = runCommand("id", timeoutMs = timeoutMs)
         val text = id.output
         val uid = Regex("""uid=(\d+)""").find(text)?.groupValues?.get(1)?.toIntOrNull() ?: -1
         if (uid != 0) {
@@ -112,7 +112,7 @@ class RootShell(private val log: (String) -> Unit = {}) {
             "/data/adb/magisk/magisk -V",
         )
         for (command in candidates) {
-            val result = exec(command, timeoutMs = 4_000)
+            val result = runCommand(command, timeoutMs = 4_000)
             val line = result.output.lineSequence().firstOrNull { it.isNotBlank() }?.trim()
             if (result.exit == 0 && !line.isNullOrBlank() && line.length <= 64) return line
         }
@@ -123,7 +123,7 @@ class RootShell(private val log: (String) -> Unit = {}) {
      * Runs [command] as root. [maxBytes] bounds the merged output; [timeoutMs] kills the process
      * tree when a command ignores its own limits.
      */
-    fun exec(command: String, timeoutMs: Long = DEFAULT_TIMEOUT_MS, maxBytes: Int = DEFAULT_MAX_BYTES): Result {
+    fun runCommand(command: String, timeoutMs: Long = DEFAULT_TIMEOUT_MS, maxBytes: Int = DEFAULT_MAX_BYTES): Result {
         if (command.isBlank()) return Result(0, "", false, false)
         val su = suPath() ?: return Result(-1, "", false, false, "su_missing")
         val started = System.nanoTime()
@@ -172,7 +172,7 @@ class RootShell(private val log: (String) -> Unit = {}) {
         val size = (stat["size"] as? Long) ?: 0L
         val limit = minOf(size, maxBytes.toLong()).coerceAtLeast(0)
         // `head -c` keeps a huge file from crossing the bridge at all; base64 keeps bytes intact.
-        val result = exec("head -c $limit -- ${quote(path)} | base64", maxBytes = (limit * 4 / 3 + 4096).toInt())
+        val result = runCommand("head -c $limit -- ${quote(path)} | base64", maxBytes = (limit * 4 / 3 + 4096).toInt())
         if (result.exit != 0) return mapOf("ok" to false, "error" to result.output.ifBlank { "read_failed" })
         val decoded = try {
             Base64.decode(result.output.filterNot { it.isWhitespace() }, Base64.DEFAULT)
@@ -195,7 +195,7 @@ class RootShell(private val log: (String) -> Unit = {}) {
             return mapOf("ok" to false, "error" to "decode_failed")
         }
         val dir = path.substringBeforeLast('/', "")
-        if (dir.isNotEmpty()) exec("mkdir -p -- ${quote(dir)}")
+        if (dir.isNotEmpty()) runCommand("mkdir -p -- ${quote(dir)}")
         val redirect = if (append) ">>" else ">"
         var offset = 0
         var first = true
@@ -203,7 +203,7 @@ class RootShell(private val log: (String) -> Unit = {}) {
             val end = minOf(offset + CHUNK_BYTES, bytes.size)
             val chunk = Base64.encodeToString(bytes.copyOfRange(offset, end), Base64.NO_WRAP)
             val op = if (first) redirect else ">>"
-            val result = exec("printf %s ${quote(chunk)} | base64 -d $op ${quote(path)}")
+            val result = runCommand("printf %s ${quote(chunk)} | base64 -d $op ${quote(path)}")
             if (result.exit != 0) return mapOf("ok" to false, "error" to result.output.ifBlank { "write_failed" })
             first = false
             offset = end
@@ -213,7 +213,7 @@ class RootShell(private val log: (String) -> Unit = {}) {
     }
 
     fun stat(path: String): Map<String, Any?> {
-        val result = exec("stat -c '%F|%s|%a|%u|%g|%Y' -- ${quote(path)}")
+        val result = runCommand("stat -c '%F|%s|%a|%u|%g|%Y' -- ${quote(path)}")
         if (result.exit != 0) return mapOf("exists" to false)
         val parts = result.output.trim().substringBefore('\n').split('|')
         if (parts.size < 6) return mapOf("exists" to false)
@@ -236,7 +236,7 @@ class RootShell(private val log: (String) -> Unit = {}) {
 
     fun list(path: String): Map<String, Any?> {
         // `find -maxdepth 1` keeps the shell out of name parsing: one `stat` line per entry.
-        val result = exec(
+        val result = runCommand(
             "find ${quote(path)} -mindepth 1 -maxdepth 1 -exec stat -c '%n|%F|%s|%a|%Y' {} + 2>/dev/null | head -2000",
         )
         if (result.exit != 0) return mapOf("ok" to false, "error" to result.output.ifBlank { "list_failed" })
