@@ -8,8 +8,8 @@ import java.util.Collections
  * What the person allowed root mode to do.
  *
  * Root mode hands the engine a real `su` on the host, so the switch alone is not a policy: the
- * scope ([writeAccess]) and the confirmation level ([approval]) are stored next to it and are
- * read on every call, never cached in the bridge.
+ * scope ([scope]: read / write / full), the confirmation level ([approval]) and — always — the
+ * payment guard are read on every call, never cached in the bridge.
  */
 class RootPolicy private constructor(private val prefs: SharedPreferences) {
 
@@ -21,10 +21,22 @@ class RootPolicy private constructor(private val prefs: SharedPreferences) {
         get() = prefs.getBoolean(K_ENABLED, false)
         set(value) = prefs.edit().putBoolean(K_ENABLED, value).apply()
 
-    /** Off: read-only commands run, anything that writes is refused before `su` is called. */
-    var writeAccess: Boolean
-        get() = prefs.getBoolean(K_WRITE, true)
-        set(value) = prefs.edit().putBoolean(K_WRITE, value).apply()
+    /**
+     * 三档访问范围：
+     *  - [SCOPE_READ] 只读：写操作在调用 `su` 之前就被拒；
+     *  - [SCOPE_WRITE] 读写：按 [approval] 确认危险命令；
+     *  - [SCOPE_FULL] 完全权限：不再询问，命令直接执行（支付保护照旧生效）。
+     */
+    var scope: String
+        get() = prefs.getString(K_SCOPE, null)
+            ?: if (prefs.getBoolean(K_WRITE, true)) SCOPE_WRITE else SCOPE_READ
+        set(value) = prefs.edit().putString(K_SCOPE, normalizeScope(value)).apply()
+
+    /** 写操作是否放行（读写与完全权限都放行）。 */
+    val writeAccess: Boolean get() = scope != SCOPE_READ
+
+    /** 完全权限：不做确认，模型直接拿 root。 */
+    val fullAccess: Boolean get() = scope == SCOPE_FULL
 
     /** [APPROVAL_OFF] (never ask), [APPROVAL_DANGER] (ask for destructive commands), [APPROVAL_ALWAYS]. */
     var approval: String
@@ -36,25 +48,49 @@ class RootPolicy private constructor(private val prefs: SharedPreferences) {
         get() = prefs.getBoolean(K_ACK, false)
         set(value) = prefs.edit().putBoolean(K_ACK, value).apply()
 
-    /** Why [command] needs a tap, or null when the policy lets it through unasked. */
-    fun confirmReason(command: String): String? = when (approval) {
-        APPROVAL_OFF -> null
-        APPROVAL_ALWAYS -> "always"
-        else -> if (isDestructive(command)) "destructive" else null
-    }
+    /**
+     * Why [command] needs a tap, or null when the policy lets it through unasked.
+     * 完全权限下永远是 null：那一档买的就是「不问」。
+     */
+    fun confirmReason(command: String): String? = confirmReasonFor(scope, approval, command)
+
+    /** 只读档的命令行闸门：不是纯读就拒。 */
+    fun execRefusal(command: String): String? = execRefusalFor(scope, command)
 
     companion object {
         const val APPROVAL_OFF = "off"
         const val APPROVAL_DANGER = "danger"
         const val APPROVAL_ALWAYS = "always"
 
+        const val SCOPE_READ = "read"
+        const val SCOPE_WRITE = "write"
+        const val SCOPE_FULL = "full"
+
         private const val FILE = "dsh_root_mode"
         private const val K_ENABLED = "enabled"
         private const val K_WRITE = "write"
+        private const val K_SCOPE = "scope"
         private const val K_APPROVAL = "approval"
         private const val K_ACK = "acknowledged"
 
         private var instance: RootPolicy? = null
+
+        /** 确认判定本身是纯函数，放在这里才测得动（实例要 SharedPreferences）。 */
+        fun confirmReasonFor(scope: String, approval: String, command: String): String? = when {
+            normalizeScope(scope) == SCOPE_FULL -> null
+            approval == APPROVAL_OFF -> null
+            approval == APPROVAL_ALWAYS -> "always"
+            else -> if (isDestructive(command)) "destructive" else null
+        }
+
+        fun execRefusalFor(scope: String, command: String): String? =
+            if (normalizeScope(scope) == SCOPE_READ && !isReadOnly(command)) "read_only_scope" else null
+
+        /** 未知值一律退回读写档：宁可多问一句，也不要意外放开。 */
+        fun normalizeScope(value: String?): String = when (value) {
+            SCOPE_READ, SCOPE_WRITE, SCOPE_FULL -> value
+            else -> SCOPE_WRITE
+        }
 
         fun get(context: Context): RootPolicy = synchronized(this) {
             instance ?: RootPolicy(context.applicationContext.getSharedPreferences(FILE, Context.MODE_PRIVATE))
@@ -156,9 +192,10 @@ class RootPolicy private constructor(private val prefs: SharedPreferences) {
          * The scope gate for the file channel. [isReadOnly] answers for shell command lines;
          * `dsh-root write` is an operation rather than a command line, so it is decided here —
          * otherwise the read-only switch would stop `echo > file` but not the file channel.
+         * 完全权限下这里也放行，唯一还拦着的是 [PaymentGuard]。
          */
-        fun scopeRefusal(op: String, writeAccess: Boolean): String? =
-            if (op == "write" && !writeAccess) "read_only_scope" else null
+        fun scopeRefusal(op: String, scope: String): String? =
+            if (op == "write" && normalizeScope(scope) == SCOPE_READ) "read_only_scope" else null
 
         /** Newest-first audit trail, in memory only: it is a debugging aid, not a log file. */
         private const val LOG_LIMIT = 200

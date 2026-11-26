@@ -4,7 +4,9 @@
 
 <p align="center">
   <b>Community patch: Root mode (KernelSU / Magisk / APatch) lets the agent read and write <code>/data</code>.</b><br>
-  <sub>Settings › Abilities › Root mode · <code>sudo</code> / <code>su</code> / <code>dsh-root</code> guest shims · read-only scope · confirmation for destructive commands ·
+  <sub>Settings › Abilities › Root mode · <code>sudo</code> / <code>su</code> / <code>dsh-root</code> guest shims ·
+  read-only / read-write / <b>full access</b> · confirmation for destructive commands ·
+  <b>payment guard (hard, always on)</b> · based on upstream <b>v1.4.0</b> ·
   <a href="ROOT-MODE.md">design</a> · <a href="docs/guide/en/19-root-mode.md">guide</a> · upstream: <a href="https://github.com/ccch1mneyyy/dsh-Go">ccch1mneyyy/dsh-Go</a></sub>
 </p>
 

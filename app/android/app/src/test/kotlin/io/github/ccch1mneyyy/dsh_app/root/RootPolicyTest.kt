@@ -84,13 +84,47 @@ class RootPolicyTest {
      * through the switch the person turned on.
      */
     @Test fun readOnlyScopeRefusesTheFileChannelWrite() {
-        assertEquals("read_only_scope", RootPolicy.scopeRefusal("write", writeAccess = false))
-        assertNull(RootPolicy.scopeRefusal("write", writeAccess = true))
+        assertEquals("read_only_scope", RootPolicy.scopeRefusal("write", RootPolicy.SCOPE_READ))
+        assertNull(RootPolicy.scopeRefusal("write", RootPolicy.SCOPE_WRITE))
+        assertNull(RootPolicy.scopeRefusal("write", RootPolicy.SCOPE_FULL))
     }
 
     @Test fun readOnlyScopeStillAllowsReadingTheFileChannel() {
         for (op in listOf("read", "list", "stat", "info", "exec")) {
-            assertNull(op, RootPolicy.scopeRefusal(op, writeAccess = false))
+            assertNull(op, RootPolicy.scopeRefusal(op, RootPolicy.SCOPE_READ))
         }
+    }
+
+    @Test fun readOnlyScopeRefusesCommandsThatWrite() {
+        assertEquals("read_only_scope", RootPolicy.execRefusalFor(RootPolicy.SCOPE_READ, "rm -rf /data/local/tmp/x"))
+        assertNull(RootPolicy.execRefusalFor(RootPolicy.SCOPE_READ, "ls /data/data"))
+        for (scope in listOf(RootPolicy.SCOPE_WRITE, RootPolicy.SCOPE_FULL)) {
+            assertNull(scope, RootPolicy.execRefusalFor(scope, "rm -rf /data/local/tmp/x"))
+        }
+    }
+
+    /**
+     * 完全权限买的就是「不问」：连删库都不弹窗。这是这一档的定义，不是漏判 ——
+     * 所以它才要一个单独的确认弹窗才能打开。
+     */
+    @Test fun fullScopeNeverAsks() {
+        for (command in listOf("rm -rf /data/data", "reboot", "pm clear com.android.settings")) {
+            assertNull(command, RootPolicy.confirmReasonFor(RootPolicy.SCOPE_FULL, RootPolicy.APPROVAL_ALWAYS, command))
+        }
+        assertEquals(
+            "destructive",
+            RootPolicy.confirmReasonFor(RootPolicy.SCOPE_WRITE, RootPolicy.APPROVAL_DANGER, "rm -rf /data/data"),
+        )
+        assertEquals(
+            "always",
+            RootPolicy.confirmReasonFor(RootPolicy.SCOPE_WRITE, RootPolicy.APPROVAL_ALWAYS, "ls /data"),
+        )
+        assertNull(RootPolicy.confirmReasonFor(RootPolicy.SCOPE_WRITE, RootPolicy.APPROVAL_OFF, "rm -rf /data/data"))
+    }
+
+    @Test fun unknownScopeFallsBackToReadWrite() {
+        assertEquals(RootPolicy.SCOPE_WRITE, RootPolicy.normalizeScope(null))
+        assertEquals(RootPolicy.SCOPE_WRITE, RootPolicy.normalizeScope("root-everything"))
+        assertEquals(RootPolicy.SCOPE_FULL, RootPolicy.normalizeScope(RootPolicy.SCOPE_FULL))
     }
 }

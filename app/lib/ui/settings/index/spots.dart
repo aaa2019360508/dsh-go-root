@@ -814,6 +814,13 @@ abstract final class Spots {
     keywords: (l) => l.searchKwRootApproval,
     freq: Freq.medium,
   );
+  static final rootPayment = SettingSpot(
+    'root-payment',
+    page: SettingsPageId.rootMode,
+    title: (l) => l.rootModePaymentHard,
+    keywords: (l) => l.searchKwRootPayment,
+    freq: Freq.medium,
+  );
   static final rootClear = SettingSpot(
     'root-clear',
     page: SettingsPageId.rootMode,
@@ -1316,6 +1323,7 @@ final _rows = <SettingSpot>[
   Spots.rootRefresh,
   Spots.rootScope,
   Spots.rootApproval,
+  Spots.rootPayment,
   Spots.rootClear,
   Spots.phoneA11yRestore,
   Spots.phoneConfirm,

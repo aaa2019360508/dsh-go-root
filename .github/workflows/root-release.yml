@@ -32,7 +32,7 @@ concurrency:
 
 env:
   FLUTTER_VERSION: 3.47.7
-  RELEASE_TAG: v1.3.0-root.2
+  RELEASE_TAG: v1.4.0-root.1
 
 jobs:
   apk:

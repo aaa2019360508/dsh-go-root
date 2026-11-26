@@ -17,8 +17,9 @@ class RootStatus {
     this.uid = -1,
     this.suPath = '',
     this.detail = '',
-    this.writeAccess = true,
+    this.scope = RootScope.write,
     this.approval = RootApproval.danger,
+    this.paymentGuard = 0,
     this.acknowledged = false,
     this.listening = false,
     this.requests = 0,
@@ -41,9 +42,20 @@ class RootStatus {
   /// `su_missing`, `not_granted`, `timeout`, or empty.
   final String detail;
 
-  /// Off: commands that write are refused before `su` runs.
-  final bool writeAccess;
+  /// 只读 / 读写 / 完全权限；见 [RootScope]。
+  final RootScope scope;
+
+  /// 写操作是否放行（读写与完全权限都放行）。
+  bool get writeAccess => scope != RootScope.read;
+
+  /// 完全权限：不再询问，命令直接执行。
+  bool get fullAccess => scope == RootScope.full;
+
   final RootApproval approval;
+
+  /// 支付保护覆盖的包名数量：这一条不可关闭。
+  final int paymentGuard;
+
   final bool acknowledged;
 
   /// The bridge the guest talks to is listening.
@@ -82,14 +94,40 @@ class RootStatus {
       uid: pick<int>('uid') ?? -1,
       suPath: pick<String>('suPath') ?? '',
       detail: pick<String>('detail') ?? '',
-      writeAccess: pick<bool>('writeAccess') ?? true,
+      scope: RootScope.parse(pick<String>('scope'), writeAccess: pick<bool>('writeAccess')),
       approval: RootApproval.parse(pick<String>('approval')),
+      paymentGuard: pick<int>('paymentGuard') ?? 0,
       acknowledged: pick<bool>('acknowledged') ?? false,
       listening: pick<bool>('listening') ?? false,
       requests: pick<int>('requests') ?? 0,
       logs: logs,
       messages: messages,
     );
+  }
+}
+
+/// 三档访问范围，和 Android 侧的 `RootPolicy.SCOPE_*` 一一对应。
+enum RootScope {
+  /// 只读：写操作在调 `su` 之前就被拒。
+  read('read'),
+
+  /// 读写：危险命令按确认级别弹给用户。
+  write('write'),
+
+  /// 完全权限：不再询问，模型直接拿 root。支付保护仍然生效。
+  full('full');
+
+  const RootScope(this.wire);
+
+  final String wire;
+
+  static RootScope parse(String? value, {bool? writeAccess}) {
+    for (final item in RootScope.values) {
+      if (item.wire == value) return item;
+    }
+    // 老版本只存了一个布尔：true 是读写，false 是只读。
+    if (writeAccess != null) return writeAccess ? RootScope.write : RootScope.read;
+    return RootScope.write;
   }
 }
 
@@ -187,9 +225,9 @@ class RootChannel {
     return status();
   }
 
-  Future<RootStatus> setPolicy({bool? writeAccess, RootApproval? approval}) async {
+  Future<RootStatus> setPolicy({RootScope? scope, RootApproval? approval}) async {
     await _methods.invokeMethod<Map<Object?, Object?>>('setPolicy', {
-      'writeAccess': writeAccess,
+      'scope': scope?.wire,
       'approval': approval?.wire,
     });
     return status();

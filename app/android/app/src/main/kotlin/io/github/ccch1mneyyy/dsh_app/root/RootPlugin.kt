@@ -59,9 +59,9 @@ class RootPlugin : FlutterPlugin, MethodChannel.MethodCallHandler, EventChannel.
                 worker.execute { reply(result) { control.setEnabled(enabled) } }
             }
             "setPolicy" -> {
-                val write = call.argument<Any?>("writeAccess") as? Boolean
+                val scope = call.argument<String>("scope")
                 val approval = call.argument<String>("approval")
-                result.success(control.setPolicy(write, approval))
+                result.success(control.setPolicy(scope, approval))
             }
             "acknowledge" -> {
                 control.acknowledge()

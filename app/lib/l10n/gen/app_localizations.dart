@@ -34767,7 +34767,7 @@ abstract class L10n {
   /// No description provided for @searchKwRootScope.
   ///
   /// In zh, this message translates to:
-  /// **'访问范围,只读,读写,/data 权限'**
+  /// **'访问范围,只读,读写,完全权限,/data 权限'**
   String get searchKwRootScope;
 
   /// No description provided for @searchKwRootApproval.
@@ -35009,6 +35009,90 @@ abstract class L10n {
   /// In zh, this message translates to:
   /// **'我知道了'**
   String get rootModeWarningAccept;
+
+  /// No description provided for @rootModeScopeFull.
+  ///
+  /// In zh, this message translates to:
+  /// **'完全权限'**
+  String get rootModeScopeFull;
+
+  /// No description provided for @rootModeScopeHintWrite.
+  ///
+  /// In zh, this message translates to:
+  /// **'读写模式下，删除目录、改系统设置、装模块这类危险命令会先弹窗问你。'**
+  String get rootModeScopeHintWrite;
+
+  /// No description provided for @rootModeScopeHintFull.
+  ///
+  /// In zh, this message translates to:
+  /// **'完全权限：不再询问，模型执行任何 root 命令都直接生效。支付保护仍然拦着。'**
+  String get rootModeScopeHintFull;
+
+  /// No description provided for @rootModeApprovalMuted.
+  ///
+  /// In zh, this message translates to:
+  /// **'完全权限下不再询问，这一项暂时不起作用'**
+  String get rootModeApprovalMuted;
+
+  /// No description provided for @rootModePayment.
+  ///
+  /// In zh, this message translates to:
+  /// **'支付保护'**
+  String get rootModePayment;
+
+  /// No description provided for @rootModePaymentHard.
+  ///
+  /// In zh, this message translates to:
+  /// **'支付类应用一律拒绝'**
+  String get rootModePaymentHard;
+
+  /// No description provided for @rootModePaymentCount.
+  ///
+  /// In zh, this message translates to:
+  /// **'覆盖 {count} 个包名：支付宝、微信、云闪付、各家银行'**
+  String rootModePaymentCount(int count);
+
+  /// No description provided for @rootModePaymentFixed.
+  ///
+  /// In zh, this message translates to:
+  /// **'不可关闭'**
+  String get rootModePaymentFixed;
+
+  /// No description provided for @rootModePaymentHint.
+  ///
+  /// In zh, this message translates to:
+  /// **'读数据、改文件、pm clear 都会被拒，错误码 payment_guard；整棵读取 /data/data 同样被拒。这条不受访问范围影响，也没有开关。'**
+  String get rootModePaymentHint;
+
+  /// No description provided for @rootModeFullTitle.
+  ///
+  /// In zh, this message translates to:
+  /// **'开启完全权限模式？'**
+  String get rootModeFullTitle;
+
+  /// No description provided for @rootModeFullBody.
+  ///
+  /// In zh, this message translates to:
+  /// **'模型执行任何 root 命令都不再询问：删目录、改系统设置、装模块都会直接生效，出错没有第二次机会。支付保护仍然生效。'**
+  String get rootModeFullBody;
+
+  /// No description provided for @rootModeFullCancel.
+  ///
+  /// In zh, this message translates to:
+  /// **'取消'**
+  String get rootModeFullCancel;
+
+  /// No description provided for @rootModeFullAccept.
+  ///
+  /// In zh, this message translates to:
+  /// **'开启'**
+  String get rootModeFullAccept;
+
+  /// No description provided for @searchKwRootPayment.
+  ///
+  /// In zh, this message translates to:
+  /// **'支付保护,支付应用,支付宝,微信,银行,payment_guard,不能访问支付'**
+  String get searchKwRootPayment;
 
   /// No description provided for @phoneRuntimeUpgradeBase.
   ///

@@ -69,8 +69,11 @@ class RootControl private constructor(private val app: Context) {
 
     fun status(): Map<String, Any?> = buildMap {
         put("enabled", policy.enabled)
+        put("scope", policy.scope)
         put("writeAccess", policy.writeAccess)
+        put("fullAccess", policy.fullAccess)
         put("approval", policy.approval)
+        put("paymentGuard", PaymentGuard.size)
         put("acknowledged", policy.acknowledged)
         put("listening", bridge.listening)
         put("requests", bridge.requests)
@@ -113,8 +116,8 @@ class RootControl private constructor(private val app: Context) {
         return status()
     }
 
-    fun setPolicy(writeAccess: Boolean? = null, approval: String? = null): Map<String, Any?> {
-        writeAccess?.let { policy.writeAccess = it }
+    fun setPolicy(scope: String? = null, approval: String? = null): Map<String, Any?> {
+        scope?.let { policy.scope = RootPolicy.normalizeScope(it) }
         approval?.let { if (it in setOf(RootPolicy.APPROVAL_OFF, RootPolicy.APPROVAL_DANGER, RootPolicy.APPROVAL_ALWAYS)) policy.approval = it }
         publish()
         return status()
@@ -134,11 +137,15 @@ class RootControl private constructor(private val app: Context) {
         publish()
     }
 
-    /** A command typed by the person on the page: no confirmation, but the scope still applies. */
+    /** A command typed by the person on the page: no confirmation, but scope and payment guard apply. */
     fun runCommand(command: String, timeoutMs: Long = RootShell.DEFAULT_TIMEOUT_MS): Map<String, Any?> {
         if (command.isBlank()) return mapOf("exit" to -1, "output" to "", "error" to "empty_command")
-        if (!policy.writeAccess && !RootPolicy.isReadOnly(command)) {
-            return mapOf("exit" to -1, "output" to "", "error" to "read_only_scope")
+        PaymentGuard.commandRefusal(command)?.let { refusal ->
+            RootPolicy.record(RootPolicy.Entry(System.currentTimeMillis(), command, -1, refusal, 0))
+            return mapOf("exit" to -1, "output" to "", "error" to refusal)
+        }
+        policy.execRefusal(command)?.let { refusal ->
+            return mapOf("exit" to -1, "output" to "", "error" to refusal)
         }
         val result = shell.runCommand(command, timeoutMs)
         publish()

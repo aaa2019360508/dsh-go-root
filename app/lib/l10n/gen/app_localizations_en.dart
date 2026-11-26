@@ -19959,7 +19959,7 @@ class L10nEn extends L10n {
   String get searchKwRootRefresh => 'detect root,check su,su path,manager version';
 
   @override
-  String get searchKwRootScope => 'scope,read-only,read-write,/data access';
+  String get searchKwRootScope => 'scope,read only,read-write,full access,/data';
 
   @override
   String get searchKwRootApproval => 'confirmation,confirm destructive,ask every time,approval';
@@ -20032,8 +20032,7 @@ class L10nEn extends L10n {
   String get rootModeScopeRead => 'Read-only';
 
   @override
-  String get rootModeScopeHint =>
-      'In read-only scope, commands that write files, change permissions or install packages are refused.';
+  String get rootModeScopeHint => 'In read-only scope, writes, permission changes and installs are refused outright.';
 
   @override
   String get rootModeApproval => 'Confirmation';
@@ -20083,6 +20082,54 @@ class L10nEn extends L10n {
 
   @override
   String get rootModeWarningAccept => 'I understand';
+
+  @override
+  String get rootModeScopeFull => 'Full';
+
+  @override
+  String get rootModeScopeHintWrite =>
+      'In read-write scope, destructive commands (deleting directories, changing system settings, installing modules) ask first.';
+
+  @override
+  String get rootModeScopeHintFull =>
+      'Full access: nothing asks any more — every root command runs at once. The payment guard still refuses.';
+
+  @override
+  String get rootModeApprovalMuted => 'Full access never asks, so this has no effect right now';
+
+  @override
+  String get rootModePayment => 'Payment guard';
+
+  @override
+  String get rootModePaymentHard => 'Payment apps are always refused';
+
+  @override
+  String rootModePaymentCount(int count) {
+    return 'Covers $count packages: Alipay, WeChat, UnionPay, banks';
+  }
+
+  @override
+  String get rootModePaymentFixed => 'Always on';
+
+  @override
+  String get rootModePaymentHint =>
+      'Reads, writes and pm clear are refused with payment_guard; reading /data/data as a whole tree is refused too. Scope does not affect this, and there is no switch.';
+
+  @override
+  String get rootModeFullTitle => 'Turn on full access?';
+
+  @override
+  String get rootModeFullBody =>
+      'No root command will ask again: deleting directories, changing system settings and installing modules all take effect at once, with no second chance. The payment guard still applies.';
+
+  @override
+  String get rootModeFullCancel => 'Cancel';
+
+  @override
+  String get rootModeFullAccept => 'Turn on';
+
+  @override
+  String get searchKwRootPayment => 'payment guard,payment apps,alipay,wechat,bank,payment_guard,blocked';
 
   @override
   String get phoneRuntimeUpgradeBase =>

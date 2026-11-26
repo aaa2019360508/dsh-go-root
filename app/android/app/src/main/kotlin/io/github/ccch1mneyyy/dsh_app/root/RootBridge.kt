@@ -150,17 +150,29 @@ class RootBridge(
             served.incrementAndGet()
             when (val op = request["op"] as? String) {
                 "exec" -> handleExec(output, request)
-                "read" -> end(
-                    output,
-                    shell.read(
-                        str(request["path"]) ?: "",
-                        (int(request["maxBytes"]) ?: RootShell.DEFAULT_MAX_BYTES)
-                            .coerceIn(1, RootShell.DEFAULT_MAX_BYTES),
-                    ),
-                )
+                "read" -> {
+                    val path = str(request["path"]) ?: ""
+                    if (!guardPath(output, "read", path)) return
+                    end(
+                        output,
+                        shell.read(
+                            path,
+                            (int(request["maxBytes"]) ?: RootShell.DEFAULT_MAX_BYTES)
+                                .coerceIn(1, RootShell.DEFAULT_MAX_BYTES),
+                        ),
+                    )
+                }
                 "write" -> handleWrite(output, request)
-                "list" -> end(output, shell.list(str(request["path"]) ?: "/"))
-                "stat" -> end(output, shell.stat(str(request["path"]) ?: "/"))
+                "list" -> {
+                    val path = str(request["path"]) ?: "/"
+                    if (!guardPath(output, "list", path)) return
+                    end(output, shell.list(path))
+                }
+                "stat" -> {
+                    val path = str(request["path"]) ?: "/"
+                    if (!guardPath(output, "stat", path)) return
+                    end(output, shell.stat(path))
+                }
                 "info" -> end(output, statusMap())
                 else -> reply(output, mapOf("end" to true, "ok" to false, "error" to "unknown_op: $op"))
             }
@@ -180,9 +192,15 @@ class RootBridge(
             return
         }
         val started = System.nanoTime()
-        if (!policy.writeAccess && !RootPolicy.isReadOnly(command)) {
+        // 支付保护排在最前面：它不看访问范围，只读 / 读写 / 完全权限都一样。
+        PaymentGuard.commandRefusal(command)?.let { refusal ->
+            RootPolicy.record(RootPolicy.Entry(System.currentTimeMillis(), command, -1, refusal, 0))
+            reply(output, mapOf("end" to true, "ok" to false, "exit" to -1, "error" to refusal))
+            return
+        }
+        policy.execRefusal(command)?.let { refusal ->
             RootPolicy.record(RootPolicy.Entry(System.currentTimeMillis(), command, -1, "read_only", 0))
-            reply(output, mapOf("end" to true, "ok" to false, "exit" to -1, "error" to "read_only_scope"))
+            reply(output, mapOf("end" to true, "ok" to false, "exit" to -1, "error" to refusal))
             return
         }
         policy.confirmReason(command)?.let { reason ->
@@ -238,7 +256,8 @@ class RootBridge(
             reply(output, mapOf("end" to true, "ok" to false, "error" to "empty_path"))
             return
         }
-        RootPolicy.scopeRefusal("write", policy.writeAccess)?.let { refusal ->
+        if (!guardPath(output, "write", path)) return
+        RootPolicy.scopeRefusal("write", policy.scope)?.let { refusal ->
             RootPolicy.record(RootPolicy.Entry(System.currentTimeMillis(), "dsh-root write $path", -1, "read_only", 0))
             reply(output, mapOf("end" to true, "ok" to false, "error" to refusal))
             return
@@ -269,12 +288,26 @@ class RootBridge(
         end(output, result)
     }
 
+    /**
+     * 支付保护的路径闸门，文件通道的四个操作（read / write / list / stat）共用。
+     * 返回 false 表示已经回过拒绝，调用方直接收工。
+     */
+    private fun guardPath(output: OutputStream, op: String, path: String): Boolean {
+        val refusal = PaymentGuard.pathRefusal(path) ?: return true
+        RootPolicy.record(RootPolicy.Entry(System.currentTimeMillis(), "dsh-root $op $path", -1, refusal, 0))
+        reply(output, mapOf("end" to true, "ok" to false, "error" to refusal))
+        return false
+    }
+
     fun statusMap(): Map<String, Any?> = mapOf(
         "enabled" to policy.enabled,
+        "scope" to policy.scope,
         "writeAccess" to policy.writeAccess,
+        "fullAccess" to policy.fullAccess,
         "approval" to policy.approval,
         "listening" to listening,
         "requests" to served.get(),
+        "paymentGuard" to PaymentGuard.size,
     )
 
     private fun end(output: OutputStream, result: Map<String, Any?>) =

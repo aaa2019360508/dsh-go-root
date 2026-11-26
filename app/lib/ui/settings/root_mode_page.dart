@@ -92,30 +92,47 @@ class _RootModePageState extends ConsumerState<RootModePage> {
         ),
         SettingsSection(
           title: l10n.rootModePolicy,
-          footer: Text(l10n.rootModeScopeHint),
+          footer: Text(_scopeHint(l10n, status.scope)),
           children: [
-            SettingsSegmentTile<bool>(
+            SettingsSegmentTile<RootScope>(
               icon: AppIcons.fileAccess,
               spot: Spots.rootScope,
               title: l10n.rootModeScope,
               segments: [
-                PillSegment(true, l10n.rootModeScopeWrite),
-                PillSegment(false, l10n.rootModeScopeRead),
+                PillSegment(RootScope.read, l10n.rootModeScopeRead),
+                PillSegment(RootScope.write, l10n.rootModeScopeWrite),
+                PillSegment(RootScope.full, l10n.rootModeScopeFull),
               ],
-              selected: status.writeAccess,
-              onChanged: (value) => unawaited(controller.setPolicy(writeAccess: value)),
+              selected: status.scope,
+              onChanged: (value) => unawaited(_selectScope(controller, value)),
             ),
             SettingsSegmentTile<RootApproval>(
               icon: AppIcons.approval,
               spot: Spots.rootApproval,
               title: l10n.rootModeApproval,
+              subtitle: status.scope == RootScope.full ? l10n.rootModeApprovalMuted : null,
               segments: [
                 PillSegment(RootApproval.off, l10n.rootModeApprovalOff),
                 PillSegment(RootApproval.danger, l10n.rootModeApprovalDanger),
                 PillSegment(RootApproval.always, l10n.rootModeApprovalAlways),
               ],
               selected: status.approval,
-              onChanged: (value) => unawaited(controller.setPolicy(approval: value)),
+              onChanged: status.scope == RootScope.full
+                  ? (_) {}
+                  : (value) => unawaited(controller.setPolicy(approval: value)),
+            ),
+          ],
+        ),
+        SettingsSection(
+          title: l10n.rootModePayment,
+          footer: Text(l10n.rootModePaymentHint),
+          children: [
+            SettingsTile(
+              icon: AppIcons.permissionRisky,
+              spot: Spots.rootPayment,
+              title: l10n.rootModePaymentHard,
+              subtitle: l10n.rootModePaymentCount(status.paymentGuard),
+              trailing: Text(l10n.rootModePaymentFixed, style: Theme.of(context).textTheme.labelSmall),
             ),
           ],
         ),
@@ -187,6 +204,33 @@ class _RootModePageState extends ConsumerState<RootModePage> {
       ],
     );
   }
+
+  /// 完全权限是这一页唯一一个「点一下就到」的危险档位，所以先问一句再落盘。
+  Future<void> _selectScope(RootModeController controller, RootScope value) async {
+    if (value == ref.read(rootModeProvider).status.scope) return;
+    if (value == RootScope.full) {
+      final l10n = context.l10n;
+      final ok = await showDialog<bool>(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text(l10n.rootModeFullTitle),
+          content: Text(l10n.rootModeFullBody),
+          actions: [
+            TextButton(onPressed: () => Navigator.of(context).pop(false), child: Text(l10n.rootModeFullCancel)),
+            FilledButton(onPressed: () => Navigator.of(context).pop(true), child: Text(l10n.rootModeFullAccept)),
+          ],
+        ),
+      );
+      if (ok != true) return;
+    }
+    await controller.setPolicy(scope: value);
+  }
+
+  String _scopeHint(L10n l10n, RootScope scope) => switch (scope) {
+    RootScope.read => l10n.rootModeScopeHint,
+    RootScope.write => l10n.rootModeScopeHintWrite,
+    RootScope.full => l10n.rootModeScopeHintFull,
+  };
 
   Future<void> _askConfirm(RootConfirmRequest request) async {
     final l10n = context.l10n;

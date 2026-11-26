@@ -74,6 +74,7 @@ const _rows = {
   'root-refresh',
   'root-scope',
   'root-approval',
+  'root-payment',
   'root-clear',
   'phone-a11y-restore',
   'phone-confirm',

@@ -4,7 +4,7 @@
   "searchKwRootMode": "root,su,sudo,超级权限,最高权限,KernelSU,Magisk,APatch,data,/data,系统目录",
   "searchKwRootSwitch": "root 开关,开启 root,授权,root 权限",
   "searchKwRootRefresh": "检测 root,检查 su,su 路径,管理器版本",
-  "searchKwRootScope": "访问范围,只读,读写,/data 权限",
+  "searchKwRootScope": "访问范围,只读,读写,完全权限,/data 权限",
   "searchKwRootApproval": "确认方式,危险操作确认,每次确认,审批",
   "searchKwRootClear": "清空记录,root 日志,命令记录",
   "rootModeStatus": "状态",
@@ -44,5 +44,26 @@
   "rootModeConfirmAllow": "允许",
   "rootModeConfirmDeny": "拒绝",
   "rootModeWarning": "开启后，模型可以读写 /data、/system 和其他应用的数据，也能安装模块、改系统设置。做错可能丢数据、泄露隐私或让手机无法开机。请先备份，只在你自己的设备上使用。",
-  "rootModeWarningAccept": "我知道了"
+  "rootModeWarningAccept": "我知道了",
+  "rootModeScopeFull": "完全权限",
+  "rootModeScopeHintWrite": "读写模式下，删除目录、改系统设置、装模块这类危险命令会先弹窗问你。",
+  "rootModeScopeHintFull": "完全权限：不再询问，模型执行任何 root 命令都直接生效。支付保护仍然拦着。",
+  "rootModeApprovalMuted": "完全权限下不再询问，这一项暂时不起作用",
+  "rootModePayment": "支付保护",
+  "rootModePaymentHard": "支付类应用一律拒绝",
+  "rootModePaymentCount": "覆盖 {count} 个包名：支付宝、微信、云闪付、各家银行",
+  "@rootModePaymentCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rootModePaymentFixed": "不可关闭",
+  "rootModePaymentHint": "读数据、改文件、pm clear 都会被拒，错误码 payment_guard；整棵读取 /data/data 同样被拒。这条不受访问范围影响，也没有开关。",
+  "rootModeFullTitle": "开启完全权限模式？",
+  "rootModeFullBody": "模型执行任何 root 命令都不再询问：删目录、改系统设置、装模块都会直接生效，出错没有第二次机会。支付保护仍然生效。",
+  "rootModeFullCancel": "取消",
+  "rootModeFullAccept": "开启",
+  "searchKwRootPayment": "支付保护,支付应用,支付宝,微信,银行,payment_guard,不能访问支付"
 }

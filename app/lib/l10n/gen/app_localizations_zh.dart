@@ -18916,7 +18916,7 @@ class L10nZh extends L10n {
   String get searchKwRootRefresh => '检测 root,检查 su,su 路径,管理器版本';
 
   @override
-  String get searchKwRootScope => '访问范围,只读,读写,/data 权限';
+  String get searchKwRootScope => '访问范围,只读,读写,完全权限,/data 权限';
 
   @override
   String get searchKwRootApproval => '确认方式,危险操作确认,每次确认,审批';
@@ -19037,6 +19037,50 @@ class L10nZh extends L10n {
 
   @override
   String get rootModeWarningAccept => '我知道了';
+
+  @override
+  String get rootModeScopeFull => '完全权限';
+
+  @override
+  String get rootModeScopeHintWrite => '读写模式下，删除目录、改系统设置、装模块这类危险命令会先弹窗问你。';
+
+  @override
+  String get rootModeScopeHintFull => '完全权限：不再询问，模型执行任何 root 命令都直接生效。支付保护仍然拦着。';
+
+  @override
+  String get rootModeApprovalMuted => '完全权限下不再询问，这一项暂时不起作用';
+
+  @override
+  String get rootModePayment => '支付保护';
+
+  @override
+  String get rootModePaymentHard => '支付类应用一律拒绝';
+
+  @override
+  String rootModePaymentCount(int count) {
+    return '覆盖 $count 个包名：支付宝、微信、云闪付、各家银行';
+  }
+
+  @override
+  String get rootModePaymentFixed => '不可关闭';
+
+  @override
+  String get rootModePaymentHint => '读数据、改文件、pm clear 都会被拒，错误码 payment_guard；整棵读取 /data/data 同样被拒。这条不受访问范围影响，也没有开关。';
+
+  @override
+  String get rootModeFullTitle => '开启完全权限模式？';
+
+  @override
+  String get rootModeFullBody => '模型执行任何 root 命令都不再询问：删目录、改系统设置、装模块都会直接生效，出错没有第二次机会。支付保护仍然生效。';
+
+  @override
+  String get rootModeFullCancel => '取消';
+
+  @override
+  String get rootModeFullAccept => '开启';
+
+  @override
+  String get searchKwRootPayment => '支付保护,支付应用,支付宝,微信,银行,payment_guard,不能访问支付';
 
   @override
   String get phoneRuntimeUpgradeBase => '新引擎与现有 Linux 环境不能确认兼容，更新已停止。原环境和已装工具没有删除。请先完整备份，再联系维护者迁移；不要直接重置或卸载 App。';

@@ -114,9 +114,9 @@ class RootModeController extends Notifier<RootModeState> {
     }
   }
 
-  Future<void> setPolicy({bool? writeAccess, RootApproval? approval}) async {
+  Future<void> setPolicy({RootScope? scope, RootApproval? approval}) async {
     try {
-      final status = await ref.read(rootChannelProvider).setPolicy(writeAccess: writeAccess, approval: approval);
+      final status = await ref.read(rootChannelProvider).setPolicy(scope: scope, approval: approval);
       state = state.copyWith(status: status);
     } catch (e) {
       state = state.copyWith(error: e.toString());

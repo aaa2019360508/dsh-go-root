@@ -4,7 +4,7 @@
   "searchKwRootMode": "root,su,sudo,superuser,privilege,KernelSU,Magisk,APatch,data,/data,system directories",
   "searchKwRootSwitch": "root switch,enable root,grant,superuser",
   "searchKwRootRefresh": "detect root,check su,su path,manager version",
-  "searchKwRootScope": "scope,read-only,read-write,/data access",
+  "searchKwRootScope": "scope,read only,read-write,full access,/data",
   "searchKwRootApproval": "confirmation,confirm destructive,ask every time,approval",
   "searchKwRootClear": "clear log,root log,command history",
   "rootModeStatus": "Status",
@@ -28,7 +28,7 @@
   "rootModeScope": "Scope",
   "rootModeScopeWrite": "Read-write",
   "rootModeScopeRead": "Read-only",
-  "rootModeScopeHint": "In read-only scope, commands that write files, change permissions or install packages are refused.",
+  "rootModeScopeHint": "In read-only scope, writes, permission changes and installs are refused outright.",
   "rootModeApproval": "Confirmation",
   "rootModeApprovalOff": "Never ask",
   "rootModeApprovalDanger": "Ask for destructive",
@@ -44,5 +44,26 @@
   "rootModeConfirmAllow": "Allow",
   "rootModeConfirmDeny": "Deny",
   "rootModeWarning": "With this on, the model can read and write /data, /system and other apps' data, install modules and change system settings. A mistake can lose data, leak private files or leave the phone unable to boot. Back up first, and only do this on a device you own.",
-  "rootModeWarningAccept": "I understand"
+  "rootModeWarningAccept": "I understand",
+  "rootModeScopeFull": "Full",
+  "rootModeScopeHintWrite": "In read-write scope, destructive commands (deleting directories, changing system settings, installing modules) ask first.",
+  "rootModeScopeHintFull": "Full access: nothing asks any more — every root command runs at once. The payment guard still refuses.",
+  "rootModeApprovalMuted": "Full access never asks, so this has no effect right now",
+  "rootModePayment": "Payment guard",
+  "rootModePaymentHard": "Payment apps are always refused",
+  "rootModePaymentCount": "Covers {count} packages: Alipay, WeChat, UnionPay, banks",
+  "@rootModePaymentCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rootModePaymentFixed": "Always on",
+  "rootModePaymentHint": "Reads, writes and pm clear are refused with payment_guard; reading /data/data as a whole tree is refused too. Scope does not affect this, and there is no switch.",
+  "rootModeFullTitle": "Turn on full access?",
+  "rootModeFullBody": "No root command will ask again: deleting directories, changing system settings and installing modules all take effect at once, with no second chance. The payment guard still applies.",
+  "rootModeFullCancel": "Cancel",
+  "rootModeFullAccept": "Turn on",
+  "searchKwRootPayment": "payment guard,payment apps,alipay,wechat,bank,payment_guard,blocked"
 }
